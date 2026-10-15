@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Answer_Client_And_Visit_Query_179f3dedc30d4d2.input_SFObject</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentObjectApiName</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Identify_Account_Record_179c6ca08fd5e54.input_recordId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentRecordId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Identify_Account_Record_179c6ca08fd5e54.input_SFObject</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentObjectApiName</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Identify_Visit_Record_179cabc7ad98249.input_SFObject</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentObjectApiName</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Identify_Visit_Record_179cabc7ad98249.input_recordId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentRecordId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>Client_and_Visit_Information_16jf686c24adc85.Agentforce_Answer_Client_And_Visit_Query_179f3dedc30d4d2.input_recordId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>currentRecordId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <description>Automate common business tasks and assist users in their flow of work. Agentforce Employee Agent can search knowledge articles and other data sources. Customize it further to meet your employees’ business needs.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16j4c6543d71f79</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>Client_Limits_Queries_16jKY000000wmgk</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Client_Revenue_Queries_16j74664b9f0487</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Client_and_Visit_Information_16jf686c24adc85</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Opportunity_Creation_16j7055362cd26e</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Opportunity_Creation_16j7055362cd26e</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles user requests related to  creating opportunities. Do not answer questions about opportunities, just creating them.</description>
+        <developerName>Opportunity_Creation_16j7055362cd26e</developerName>
+        <genAiPluginInstructions>
+            <description>For the Identify Account Record action:
+- If the action returns multiple matching records IDs, present the list to the user and ask them to select the intended one.
+- Do NOT proceed with any other action until the user has clarified or selected a single record.
+- If a single record is returned, continue with the flow.
+
+If you cant identify the account record, tell the user that you need more information for identifing the account.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a users requests creating an opportunity first call `Identify_Account_Record` to resolve the Account ID then call the &apos;Create Opportunity&apos; action, the user has to fill the form for creating the opportunity. Do not proceed until the user has filled all the necessary data.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Agentforce_Identify_Account_Record_179e88d7010c89c</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Agentforce_Create_Opportunity_17931dd9b844159</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Agentforce_Identify_Account_Record_179e88d7010c89c</fullName>
+            <description>Use this action to identify the specific Salesforce Account the user is referring to when their request requires working with an individual record. Do not use this action for aggregated, summary, or general operations that do not depend on a single record (for example, totals, counts, lists, or overall metrics).</description>
+            <developerName>Agentforce_Identify_Account_Record_179e88d7010c89c</developerName>
+            <invocationTarget>Agentforce_Identify_Account_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Identify_Account_Record</localDeveloperName>
+            <masterLabel>Agentforce Identify Account Record</masterLabel>
+            <source>Agentforce_Identify_Account_Record</source>
+        </localActions>
+        <localActions>
+            <fullName>Agentforce_Create_Opportunity_17931dd9b844159</fullName>
+            <description>Use this action to create a Opportunity</description>
+            <developerName>Agentforce_Create_Opportunity_17931dd9b844159</developerName>
+            <invocationTarget>Agentforce_Create_Opportunity</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Create_Opportunity</localDeveloperName>
+            <masterLabel>Agentforce Create Opportunity</masterLabel>
+        </localActions>
+        <localDeveloperName>Opportunity_Creation</localDeveloperName>
+        <masterLabel>Opportunity Creation</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is only to assist users in creating opportunities. Do not answer questions about opportunities. Just creating them</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Client_Limits_Queries_16jKY000000wmgk</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Classify inquiries related to client limits information and assist with relevant details. Also answers questions about the limits of the client by year or name.</description>
+        <developerName>Client_Limits_Queries_16jKY000000wmgk</developerName>
+        <genAiPluginInstructions>
+            <description>Only call Identify_Account_Record when the user’s request explicitly targets a single Account and the Account ID is required to answer the question. 
+
+If the user’s request is not related to a single account, do not call the action.
+
+If the user’s request requires the account ID (for example, “limits for Iberdrola”), then call the action to obtain the ID.
+
+Once the account record (and ID, if needed) is identified, answer the user’s question using the appropriate information and calling the right action.</description>
+            <developerName>instructions_0_1773234112994</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1773234112994</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>For Identify Account Record action:
+
+- If the action returns multiple matching account IDs, present the list to the user and ask them to select the intended one.
+- Do NOT proceed with any other action until the user has clarified or selected a single account record.
+- If a single record is returned, continue with the flow.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the query is Limits related,check if you already have the necessary data to answer the question from other questions if the user is asking about the same client or run the &apos;Agentforce Limits Query&apos; action to obtain the data.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Agentforce_Identify_Account_Record_179KY0000011810</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Agentforce_Limit_Query_179KY0000011810</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Agentforce_Identify_Account_Record_179KY0000011810</fullName>
+            <description>Use this action to identify the specific Salesforce Account the user is referring to when their request requires working with an individual record. Do not use this action for aggregated, summary, or general operations that do not depend on a single record (for example, totals, counts, lists, or overall metrics).</description>
+            <developerName>Agentforce_Identify_Account_Record_179KY0000011810</developerName>
+            <invocationTarget>Agentforce_Identify_Account_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Identify_Account_Record</localDeveloperName>
+            <masterLabel>Agentforce Identify Account Record</masterLabel>
+            <source>Agentforce_Identify_Account_Record</source>
+        </localActions>
+        <localActions>
+            <fullName>Agentforce_Limit_Query_179KY0000011810</fullName>
+            <description>Then run the action to answer the user question about limits.
+Require user confirmation</description>
+            <developerName>Agentforce_Limit_Query_179KY0000011810</developerName>
+            <invocationTarget>Agentforce_Limit_Query</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Limit_Query</localDeveloperName>
+            <masterLabel>Agentforce Limit Query</masterLabel>
+        </localActions>
+        <localDeveloperName>Client_Limits_Queries</localDeveloperName>
+        <masterLabel>Client Limits Queries</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>I am responsible for answering questions about the limits of a client and providing accurate information based on available data. I will not address topics outside of limits inquiries. Also answers questions about the limits of the client by year or name.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Client_Revenue_Queries_16j74664b9f0487</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Classify inquiries related to client revenue information and assist with relevant details. Also answers questions about the revenues of the client by country, region, type and category. 
+Not general questions like name, rorc, sector, segment, top 3 geographies. Revenues are also called products.</description>
+        <developerName>Client_Revenue_Queries_16j74664b9f0487</developerName>
+        <genAiPluginInstructions>
+            <description>If the query is Revenue related,check if you already have the necessary data to answer the question from other questions if the user is asking about the same client or run the &apos;Agentforce Engloba Query&apos; action to obtain the data.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Only call Identify_Account_Record when the user’s request explicitly targets a single Account and the Account ID is required to answer the question. 
+
+If the user’s request is not related to a single account, do not call the action.
+
+If the user’s request requires the account ID (for example, “revenue for Iberdrola”), then call the action to obtain the ID.
+
+Once the account record (and ID, if needed) is identified, answer the user’s question using the appropriate information and calling the right action.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>For Identify Account Record action:
+
+- If the action returns multiple matching account IDs, present the list to the user and ask them to select the intended one.
+- Do NOT proceed with any other action until the user has clarified or selected a single account record.
+- If a single record is returned, continue with the flow.</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Agentforce_Identify_Account_Record_179b752c3a0f68d</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Agentforce_Engloba_Query_179KY000001180x</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Agentforce_Engloba_Query_179KY000001180x</fullName>
+            <description>Then run the action to answer the user question about revenues. Require user confirmation</description>
+            <developerName>Agentforce_Engloba_Query_179KY000001180x</developerName>
+            <invocationTarget>Agentforce_Engloba_Query</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Engloba_Query</localDeveloperName>
+            <masterLabel>Agentforce Engloba Query</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Agentforce_Identify_Account_Record_179b752c3a0f68d</fullName>
+            <description>Use this action to identify the specific Salesforce Account the user is referring to when their request requires working with an individual record. Do not use this action for aggregated, summary, or general operations that do not depend on a single record (for example, totals, counts, lists, or overall metrics).</description>
+            <developerName>Agentforce_Identify_Account_Record_179b752c3a0f68d</developerName>
+            <invocationTarget>Agentforce_Identify_Account_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Identify_Account_Record</localDeveloperName>
+            <masterLabel>Agentforce Identify Account Record</masterLabel>
+            <source>Agentforce_Identify_Account_Record</source>
+        </localActions>
+        <localDeveloperName>Client_Revenue_Queries</localDeveloperName>
+        <masterLabel>Client Revenue Queries</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>I am responsible for answering questions about the revenues of a client and providing accurate information based on available data. I will not address topics outside of revenue inquiries. Also answers questions about the revenues of the client by country, region, type and category.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Client_and_Visit_Information_16jf686c24adc85</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles inquiries related to client details and visit information and user information. Clients are also calles accounts, groups, subsidiarys.
+
+This topic includes specific financial indicators: RORC (profitability), EVA, Gross Margin, and top 3 geographies.
+
+It does not include: TRI, Revenue, Exposure, Gap, limit, opportunities and products questions</description>
+        <developerName>Client_and_Visit_Information_16jf686c24adc85</developerName>
+        <genAiPluginInstructions>
+            <description># Decision Logic
+Analyze the user&apos;s request and choose ONE of the following three paths:
+
+## PATH 1: Single Account Specific
+**Trigger:** The user asks a question about ONE specific Account (e.g., &quot;Show me the visits for Iberdrola&quot;).
+**Steps:**
+1. Call `Identify_Account_Record` to resolve the Account ID.
+   - *Constraint:* Do NOT call this for lists or aggregations involving multiple Accounts, or when the query explicitly targets a Visit.
+2. Call `AnswerSingleClientQuestion` with the resolved Account ID and the exact user utterance.
+
+## PATH 2: Single Visit Specific
+**Trigger:** The user asks a question about ONE specific Visit (e.g., &quot;Details for the visit &apos;Meeting with Acciona&apos;&quot;).
+**Steps:**
+1. Call `Identify_Visit_Record` to resolve the Visit ID.
+   - *Constraint:* Do NOT call this for lists, aggregations, or if the query targets an Account.
+2. Call `Get Visit Data` with the resolved Visit ID and the exact user utterance.
+
+## PATH 3: General / Multi-Record / Complex Queries
+**Trigger:** The user asks for lists, summaries, filtered queries, or questions NOT tied to a single specific ID (e.g., &quot;Show all visits&quot;, &quot;Summarize my accounts&quot;, &quot;Visits in Madrid&quot;).
+**Steps:**
+1. Call `Identify_Account_Record` to resolve the Account ID if it is necessary for the query.
+2. Call `Agentforce Answer Client And Visit Query` with the exact user utterance.
+   - *Note:* Do not attempt to identify a single record ID unless one is explicitly required and clear.
+
+# Critical Rules
+- **Exact Utterance:** Always pass the user&apos;s original question text to the answering actions.
+- **Avoid False Positives:** If the request is ambiguous or refers to multiple records, default to PATH 3.
+- **After retrieving the ids of the account or visit, review the user question to know what path to take**</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>For any Identify Record action (Account or Visit):
+- If the action returns multiple matching records IDs, present the list to the user and ask them to select the intended one.
+- Do NOT proceed with any other action until the user has clarified or selected a single record.
+- If a single record is returned, continue with the flow.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Agentforce_Identify_Account_Record_179c6ca08fd5e54</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Get_Account_Data_17956537dbb8c15</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Agentforce_Identify_Visit_Record_179cabc7ad98249</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Get_Visit_Data_179add9a910c42f</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Agentforce_Answer_Client_And_Visit_Query_179f3dedc30d4d2</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Agentforce_Identify_Visit_Record_179cabc7ad98249</fullName>
+            <description>Use thiss action to identify a visit.</description>
+            <developerName>Agentforce_Identify_Visit_Record_179cabc7ad98249</developerName>
+            <invocationTarget>Agentforce_Identify_Visit_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Identify_Visit_Record</localDeveloperName>
+            <mappingAttributes>
+                <label>SFObject</label>
+                <name>input_SFObject</name>
+                <parameterName>SFObject</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>recordId</label>
+                <name>input_recordId</name>
+                <parameterName>recordId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Agentforce Identify Visit Record</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Get_Visit_Data_179add9a910c42f</fullName>
+            <description>Retrieves specific fields for a Visit, and returns them as a JSON string.</description>
+            <developerName>Get_Visit_Data_179add9a910c42f</developerName>
+            <invocationTarget>AgentforceGetVisitData</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Get_Visit_Data</localDeveloperName>
+            <masterLabel>Get Visit Data</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Agentforce_Answer_Client_And_Visit_Query_179f3dedc30d4d2</fullName>
+            <description>Before executing this action, you must first determine whether the user’s request requires identifying a specific Salesforce record. If the request targets an individual account, always call the “Agentforce Identify Record” action to identify the relevant record and obtain its object type and record ID. Only proceed with this action once the record has been successfully identified, and use the identified record to answer the user’s question accurately. If the request involves aggregated, summary, or general operations that do not depend on a single record (for example, counts, totals, lists, or overall metrics), do not call the “Agentforce Identify Record” action and proceed without record identification. If a specific record is required but cannot be identified, do not execute this action and instead ask the user for clarification.</description>
+            <developerName>Agentforce_Answer_Client_And_Visit_Query_179f3dedc30d4d2</developerName>
+            <invocationTarget>Agentforce_Answer_Client_And_Visit_Query</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Answer_Client_And_Visit_Query</localDeveloperName>
+            <mappingAttributes>
+                <label>SFObject</label>
+                <name>input_SFObject</name>
+                <parameterName>SFObject</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>recordId</label>
+                <name>input_recordId</name>
+                <parameterName>recordId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Answer Client And Visit Query</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Agentforce_Identify_Account_Record_179c6ca08fd5e54</fullName>
+            <description>Use this action to identify the specific Salesforce Account the user is referring to when their request requires working with an individual record. Do not use this action for aggregated, summary, or general operations that do not depend on a single record (for example, totals, counts, lists, or overall metrics).</description>
+            <developerName>Agentforce_Identify_Account_Record_179c6ca08fd5e54</developerName>
+            <invocationTarget>Agentforce_Identify_Account_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Agentforce_Identify_Account_Record</localDeveloperName>
+            <mappingAttributes>
+                <label>SFObject</label>
+                <name>input_SFObject</name>
+                <parameterName>SFObject</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>recordId</label>
+                <name>input_recordId</name>
+                <parameterName>recordId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Agentforce Identify Account Record</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Get_Account_Data_17956537dbb8c15</fullName>
+            <description>Retrieves specific fields for an Account and returns them as a JSON string.</description>
+            <developerName>Get_Account_Data_17956537dbb8c15</developerName>
+            <invocationTarget>AgentorceGetAccountData</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Get_Account_Data</localDeveloperName>
+            <masterLabel>Answer Single Client Question</masterLabel>
+            <source>Get_Account_Data</source>
+        </localActions>
+        <localDeveloperName>Client_and_Visit_Information</localDeveloperName>
+        <masterLabel>Client and Visit Information</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is only to provide accurate and relevant information about clients and their visits based on user inquiries and validates the question. You also have to create visits</scope>
+    </localTopics>
+    <masterLabel>Cognitive Twin</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16j4c6543d71f79</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16j4c6543d71f79</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

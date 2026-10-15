@@ -1,0 +1,22 @@
+{
+  "required" : [ "recordName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "recordName" : {
+      "title" : "recordName",
+      "description" : "Record name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "objectApiName" : {
+      "title" : "objectApiName",
+      "description" : "Object API name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

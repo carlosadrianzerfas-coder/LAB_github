@@ -1,0 +1,56 @@
+{
+  "required" : [ "BriefName", "BriefDescription", "BriefKeyMessage", "BriefTargetAudience" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "BriefName" : {
+      "title" : "Brief Name",
+      "description" : "Name of the campaign brief to save.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefName",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefDescription" : {
+      "title" : "Brief Description",
+      "description" : "The overall objectives and  goals for your campaign.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefDescription",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefKeyMessage" : {
+      "title" : "Key Message",
+      "description" : "The specific message that you want to deliver to your customers.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefKeyMessage",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefTargetAudience" : {
+      "title" : "Target Audience",
+      "description" : "The customers you want to reach with your campaign.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefTargetAudience",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "businessUnitId" : {
+      "title" : "Business Unit Id",
+      "description" : "Business Unit Ids displayed as a list, cannot be an empty string, if there is only one item automatically pass that value and do not present a list. If a business unit has previously been selected use that value and do not display a list unless a user asks to select a business unit",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "businessUnitId",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "isConversational" : {
+      "title" : "isConversational",
+      "description" : "Make this campaign conversational?",
+      "lightning:type" : "lightning__booleanType",
+      "einstein:description" : "isConversational",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

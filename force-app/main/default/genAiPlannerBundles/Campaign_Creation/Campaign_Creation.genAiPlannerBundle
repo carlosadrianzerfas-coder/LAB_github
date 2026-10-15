@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Plan and create multi-series marketing campaigns from a written objective or marketing brief.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jKY000000wmfS</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>MarketingCampaignsRefinement_16jKY000000wmfS</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>MarketingCampaignsTopic_16jKY000000wmfS</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>MarketingCampaignsTopic_16jKY000000wmfS</fullName>
+        <aiPluginUtterances>
+            <developerName>createacampaign</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>create-a-campaign</masterLabel>
+            <utterance>Create a marketing campaign</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>getcampaigninsights</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>get-campaign-insights</masterLabel>
+            <utterance>Get campaign insights for a campaign</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>createabrief</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>create-a-brief</masterLabel>
+            <utterance>Create a marketing brief</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>Use this topic when users want to generate, make, create, summarize, or bootstrap their marketing campaigns or briefs as well for users who want to save campaigns and campaign previews. Don&apos;t use this topic for refining campaigns.</description>
+        <developerName>MarketingCampaignsTopic_16jKY000000wmfS</developerName>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Brief, Campaign Brief, or Marketing Brief, ALWAYS start by calling the IdentifyBusinessUnit action then call the GenerateBrief action, ALWAYS use the users prompt for the campaign objective, ONLY present an input if the objective is not included in the users prompt. If an objective is not included in the prompt, ask for the objective in the chat, do not show an input box. If the user does not mention a file , directly call the generateBrief action with only the campaign objective. If a user mentions a file use the QueryRecords action to locate it as best you can, multiple searches are OK but limit them to 3 queries and then prompt the user for more information if a unique file can&apos;t be identified. DO NOT provide an empty string as a file parameter, omit it entirely instead if necessary.</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>IMPORTANT Don&apos;t automatically call the SaveBrief action after GenerateBrief. The user has an option to save it later when viewing GenerateBrief output.</description>
+            <developerName>Instruction2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Campaign or Marketing Campaign without including a reference to a Brief (either in page context or history), ALWAYS start by calling the IdentifyBusinessUnit action then call the GenerateBrief action to first create and save a Brief that will be used in the GenerateCampaignFromBrief action, ALWAYS use the users prompt for the campaign objective, ONLY present an input if the objective is not included in the users prompt. If an objective is not included in the prompt, ask for the objective in the chat, do not show an input box.</description>
+            <developerName>Instruction3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Campaign or Marketing Campaign and they reference a specific Brief (or a Brief record in page context or history), ALWAYS start by calling the GenerateCampaignFromBrief action using the Brief that the user mentions.</description>
+            <developerName>Instruction4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction4</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>IMPORTANT Don&apos;t automatically call the SaveCampaign action after GenerateCampaignFromBrief.</description>
+            <developerName>Instruction5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction5</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to summarize/review/recap/outline/sum up a Campaign, ALWAYS start by calling the IdentifyRecordByName action and return the recordID.</description>
+            <developerName>Instruction6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction6</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If an action requires a recordID or campaignID, use the IdentifyRecordByName action first to find the recordID.</description>
+            <developerName>Instruction7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction7</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When saving a brief that has just been generated, ignore case differences between the outputs of the campaign generation and the inputs of the save. For example, the value of the briefName output should be used for the BriefName input.</description>
+            <developerName>Instruction8</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction8</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Never use campaignMessages JSON for generateCampaignFromBrief. Instead, ALWAYS use campaignPreviewSteps.</description>
+            <developerName>Instruction9</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction9</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If there is a value in errorMessage, don&apos;t show the output from the action or any follow-up actions. Instead, inform the user of the cause of the error using the wording in the errorMessage.</description>
+            <developerName>Instruction10</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction10</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user wants to save the campaign or campaign preview associated with a Brief, ALWAYS use the brief mentioned by the user. If the user didn&apos;t mention a specific Brief, use a brief from the page context if available. Otherwise, ask the user for clarification.</description>
+            <developerName>Instruction11</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction11</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a business unit is not available, empty list, empty string or null pass the empty string to the SaveBrief action</description>
+            <developerName>Instruction12</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction12</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a user has previously specified or currently selects a businessUnitId, ALWAYS use that ID for subsequent operations or responses.</description>
+            <developerName>Instruction13</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction13</masterLabel>
+            <sortOrder>12</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user explicitly requests to select a business unit ID (e.g., &quot;I want to choose a business unit,&quot; &quot;Show me a list of business units to select from&quot;), then immediately invoke the IdentifyBusinessUnit action regardless if a business unit has been selected.</description>
+            <developerName>Instruction14</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction14</masterLabel>
+            <sortOrder>13</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the IdentifyBusinessUnit action returns only one result, NEVER ask the user to select it. Instead use that one result for any businessUnitId input from now.</description>
+            <developerName>Instruction15</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction15</masterLabel>
+            <sortOrder>14</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>NEVER use an empty string for an input named `file`. Use `null` instead</description>
+            <developerName>Instruction16</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction16</masterLabel>
+            <sortOrder>15</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user wants to use a specific business unit by a specific ID, still call the IdentifyBusinessUnits to verify that the ID is in the list of available Business Units. When it doesn&apos;t match, let the user know that you can&apos;t find that Business Unit Id and present the results of the action for them to choose. When it does match, don&apos;t present any results from IdentifyBusinessUnits, simply use the ID the user mentioned and continue.</description>
+            <developerName>Instruction17</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction17</masterLabel>
+            <sortOrder>16</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If SaveCampaign fails because the source Brief lacks a Business Unit, do not ask the user for the ID solely for the campaign. Instead, run IdentifyBusinessUnits to find valid options, ask the user to select one. Once selected, update the Brief record using the UpdateRecord action. In the input you must use set the field BusinessUnitId to the id (the part that starts with 1Q) and the field BusinessUnit to the name. DO NOT set a &apos;title&apos;. When updating the Brief always use &apos;Brief&apos; as the SObject. IMPORTANT The UpdateRecord requires human confirmation. Wait for that user confirmation before proceeding to SaveCampaign. Once the record has successfully been updated, then you may proceed to SaveCampaign</description>
+            <developerName>Instruction18</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction18</masterLabel>
+            <sortOrder>17</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>SaveBrief_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyBusinessUnit_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateCampaignFromBrief_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SaveCampaign_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateCampaignInsights_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateBrief_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>UpdateRecordFields_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SummarizeCampaign_179KY00000117yv</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>SaveCampaign_179KY00000117yv</fullName>
+            <description>This action saves the campaign and its draft components.</description>
+            <developerName>SaveCampaign_179KY00000117yv</developerName>
+            <invocationTarget>MktCloud__SaveCampaign</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveCampaign</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign</masterLabel>
+            <progressIndicatorMessage>Saving the content</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveCampaign</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateCampaignInsights_179KY00000117yv</fullName>
+            <description>Generates campaign insights based on engagement and performance data of a specific campaign.</description>
+            <developerName>GenerateCampaignInsights_179KY00000117yv</developerName>
+            <invocationTarget>MktCloud__GenerateCampaignInsights</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateCampaignInsights</localDeveloperName>
+            <masterLabel>Marketing Cloud: Generate Campaign Insights</masterLabel>
+            <progressIndicatorMessage>Analyzing the campaign</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateCampaignInsights</source>
+        </localActions>
+        <localActions>
+            <fullName>UpdateRecordFields_179KY00000117yv</fullName>
+            <description>Updates fields on a Salesforce CRM record. The action ExtractFieldsAndValuesFromUserInput must be called prior to this action to extract the record&apos;s fields and values.</description>
+            <developerName>UpdateRecordFields_179KY00000117yv</developerName>
+            <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>UpdateRecordFields</localDeveloperName>
+            <masterLabel>Update Record</masterLabel>
+            <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+            <source>EmployeeCopilot__UpdateRecordFields</source>
+        </localActions>
+        <localActions>
+            <fullName>SummarizeCampaign_179KY00000117yv</fullName>
+            <description>Creates a summary of the campaign that includes flow name, open rates, click through rates, sent and not sent information, the number of bounces, and number of unsubscribed and opted-out messages.</description>
+            <developerName>SummarizeCampaign_179KY00000117yv</developerName>
+            <invocationTarget>summarizeCampaign</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SummarizeCampaign</localDeveloperName>
+            <masterLabel>Marketing Cloud: Summarize a Campaign</masterLabel>
+            <progressIndicatorMessage>Generating your campaign summary</progressIndicatorMessage>
+            <source>EmployeeCopilot__SummarizeCampaign</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateBrief_179KY00000117yv</fullName>
+            <description>This action can create a campaign brief using a user-provided campaign objective.</description>
+            <developerName>GenerateBrief_179KY00000117yv</developerName>
+            <invocationTarget>MktCloud__GenerateBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Drafting your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179KY00000117yv</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179KY00000117yv</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateCampaignFromBrief_179KY00000117yv</fullName>
+            <description>This action creates a draft campaign based on the provided brief.</description>
+            <developerName>GenerateCampaignFromBrief_179KY00000117yv</developerName>
+            <invocationTarget>MktCloud__GenerateCampaignFromBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateCampaignFromBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Preview</masterLabel>
+            <progressIndicatorMessage>Generating your campaign</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateCampaignFromBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179KY00000117yv</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179KY00000117yv</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>SaveBrief_179KY00000117yv</fullName>
+            <description>This action is used to save a brief that was generated using the generateBrief action.</description>
+            <developerName>SaveBrief_179KY00000117yv</developerName>
+            <invocationTarget>saveBrief</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Saving your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyBusinessUnit_179KY00000117yv</fullName>
+            <description>Finds and returns a list of Marketing Cloud business units (BUs) for the current user session. This action remembers the BU scope for subsequent marketing actions in the current session, maintaining proper access to data spaces and content workspaces.</description>
+            <developerName>IdentifyBusinessUnit_179KY00000117yv</developerName>
+            <invocationTarget>identifyBusinessUnit</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyBusinessUnit</localDeveloperName>
+            <masterLabel>Marketing Cloud: Identify Business Unit</masterLabel>
+            <progressIndicatorMessage>Identifying business units</progressIndicatorMessage>
+            <source>EmployeeCopilot__IdentifyBusinessUnit</source>
+        </localActions>
+        <localDeveloperName>MarketingCampaignsTopic</localDeveloperName>
+        <masterLabel>Marketing Cloud: Campaign Planning</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to help users in generate, create, summarize, bootstrap, or analyze their Salesforce Marketing Campaign and/or Brief objects. This also includes helping users save campaign previews associated with a brief.</scope>
+        <source>MktCloud__MarketingCampaignsTopic</source>
+    </localTopics>
+    <localTopics>
+        <fullName>MarketingCampaignsRefinement_16jKY000000wmfS</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Uses user-provided changes to refine/revise/change/alter/update a campaign preview before the preview becomes a saved campaign. NEVER use this topic for saving a campaign or campaign preview. ONLY use this topic to refine or make changes to a campaign preview.</description>
+        <developerName>MarketingCampaignsRefinement_16jKY000000wmfS</developerName>
+        <genAiPluginInstructions>
+            <description>If a user specifies to change, refine, update, edit, add to, or remove content from a campaign preview, follow these steps in order:
+1. Ensure the user has specified the change they would like to make. If none is provided, you must ASK the user to provide this first. User requests can be about specific message content (for example, &apos;rewrite the subject line of the first email&apos;) or about the overall campaign flow (for example, &apos;add a new SMS message at the end&apos; or &apos;remove the second step&apos;).
+2. Ensure you know which BriefId the preview the user would like to refine.
+3. Now call the RefineCampaignPreview action using the briefId and inputRefinement parameters determined in steps 1 and 2. ALWAYS pass the user&apos;s full, verbatim request for changes into the `InputRefinement` parameter. DO NOT try to parse or interpret the user&apos;s refinement request yourself; the action is designed to handle the full natural language input.</description>
+            <developerName>RefinePreview_Intent_And_Execution</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>RefinePreview_Intent_And_Execution</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When calling the RefineCampaignPreview action, ALWAYS map the user&apos;s complete request for changes to the `InputRefinement` string parameter.
+For example, if the user says &apos;Make the introductory email&apos;s subject line funny and change the wait time after it to 5 days&apos;, the ENTIRE string &quot;Make the introductory email&apos;s subject line funny and change the wait time after it to 5 days&quot; MUST be used as the value for the `InputRefinement` parameter.
+If the user&apos;s request is vague or missing required details to perform a refinement, DO NOT show an input text box or form. Instead, ask the user for the missing information conversationally in the chat.</description>
+            <developerName>RefinePreview_Parameter_Mapping</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>RefinePreview_Parameter_Mapping</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Before calling the RefineCampaignPreview action, you MUST have a single, confirmed &apos;BriefId&apos;. If the &apos;BriefId&apos; is NOT already in context, you MUST resolve it by using the following logic:
+**By Name:** If the user refers to the brief by a name (for example, &quot;in the Summer 2024 campaign&quot;), use QueryRecords, using natural language; don&apos;t use SOQL or SQL. In the query, be sure to include the object name for the brief as the search term, for example, &quot;Brief named Summer 2024 campaign.&quot; If zero results are returned, retry the query a few more times with different variations, for example variations of &quot;in the Summer 2024 campaign&quot; might be &quot;Summer 2024&quot; or &quot;2024 Campaign.&quot;
+**By ID:** If the user provides a specific BriefID, for example &quot;Brief 001&quot;, you must use GetRecordDetails with that ID to validate it.
+IMPORTANT: If you find zero records or multiple possible records using any of these methods, you MUST ask the user for clarification before proceeding.</description>
+            <developerName>RefinePreview_Context_Resolution</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>RefinePreview_Context_Resolution</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetRecordDetails_179KY00000117yu</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>UpdateRecordFields_179KY00000117yu</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>RefineCampaignPreview_179KY00000117yu</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY00000117yu</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>RefineCampaignPreview_179KY00000117yu</fullName>
+            <description>Refines and replaces the campaign preview steps associated with a specific brief based on user input.</description>
+            <developerName>RefineCampaignPreview_179KY00000117yu</developerName>
+            <invocationTarget>MktCloud__RefineCampaignPreview</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>RefineCampaignPreview</localDeveloperName>
+            <masterLabel>Marketing Cloud: Refine Campaign Preview</masterLabel>
+            <progressIndicatorMessage>Refining your campaign preview</progressIndicatorMessage>
+            <source>EmployeeCopilot__RefineCampaignPreview</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179KY00000117yu</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179KY00000117yu</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>GetRecordDetails_179KY00000117yu</fullName>
+            <description>Generates a text blob containing record details, including object fields and values and records from related lists.</description>
+            <developerName>GetRecordDetails_179KY00000117yu</developerName>
+            <invocationTarget>getDataForGrounding</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRecordDetails</localDeveloperName>
+            <masterLabel>Get Record Details</masterLabel>
+            <progressIndicatorMessage>Getting details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetRecordDetails</source>
+        </localActions>
+        <localActions>
+            <fullName>UpdateRecordFields_179KY00000117yu</fullName>
+            <description>Updates fields on a Salesforce CRM record. The action ExtractFieldsAndValuesFromUserInput must be called prior to this action to extract the record&apos;s fields and values.</description>
+            <developerName>UpdateRecordFields_179KY00000117yu</developerName>
+            <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>UpdateRecordFields</localDeveloperName>
+            <masterLabel>Update Record</masterLabel>
+            <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+            <source>EmployeeCopilot__UpdateRecordFields</source>
+        </localActions>
+        <localDeveloperName>MarketingCampaignsRefinement</localDeveloperName>
+        <masterLabel>Marketing Cloud: Campaign Preview Refinement</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to help users refine a campaign preview. A campaign preview is defined as a series of BriefPlanStep records associated with a brief record. The marketing brief defines a key message, target audience, and campaign objective, which are used for grounding. Each BriefPlanStep represents one message in the campaign preview.</scope>
+        <source>MktCloud__MarketingCampaignsRefinement</source>
+    </localTopics>
+    <masterLabel>Campaign Creation</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jKY000000wmfS</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jKY000000wmfS</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

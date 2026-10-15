@@ -1,0 +1,74 @@
+<template>
+    <section class="feedback-section">
+
+        <!-- HEADER -->
+        <div class="feedback-header">
+            <div class="feedback-header-main">
+                <div class="section-title">Visit Feedback</div>
+
+                <div class="feedback-tags">
+                    <span class="feedback-tag feedback-tag--ai">
+                        AI-generated
+                    </span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="feedback-header-actions">
+                <!-- Edit -->
+                <template if:false={isEditing}>
+                    <lightning-button-icon
+                        icon-name="utility:edit"
+                        alternative-text="Edit feedback"
+                        title="Edit feedback"
+                        onclick={handleEdit}>
+                    </lightning-button-icon>
+                </template>
+
+                <!-- Save / Cancel -->
+                <template if:true={isEditing}>
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        alternative-text="Cancel editing"
+                        title="Cancel editing"
+                        class="slds-m-right_x-small"
+                        onclick={handleCancel}>
+                    </lightning-button-icon>
+
+                    <lightning-button-icon
+                        icon-name="utility:save"
+                        alternative-text="Save feedback"
+                        title="Save feedback"
+                        onclick={handleSave}>
+                    </lightning-button-icon>
+                </template>
+            </div>
+        </div>
+
+        <!-- Helper message -->
+        <p class="feedback-helper">
+            This feedback was automatically generated from the transcript.
+            You can adjust it before applying the changes.
+        </p>
+
+        <!-- Read mode -->
+        <template if:false={isEditing}>
+            <div class="feedback-box">
+                <lightning-formatted-rich-text
+                    class="feedback-html"
+                    value={feedbackRichText}>
+                </lightning-formatted-rich-text>
+            </div>
+        </template>
+
+        <!-- Edit mode -->
+        <template if:true={isEditing}>
+            <lightning-input-rich-text
+                class="feedback-editor"
+                value={localValue}
+                onchange={handleChange}>
+            </lightning-input-rich-text>
+        </template>
+
+    </section>
+</template>

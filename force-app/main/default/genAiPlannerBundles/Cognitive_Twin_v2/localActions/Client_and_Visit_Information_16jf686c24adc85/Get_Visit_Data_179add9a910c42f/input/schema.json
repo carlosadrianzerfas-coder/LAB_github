@@ -1,0 +1,14 @@
+{
+  "required" : [ "visitId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "visitId" : {
+      "title" : "visitId",
+      "description" : "The unique Salesforce Visit ID that identifies the visit. This parameter is used to retrieve the visit's data and ensure the response is generated for the correct visit. display the form to the user\n",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

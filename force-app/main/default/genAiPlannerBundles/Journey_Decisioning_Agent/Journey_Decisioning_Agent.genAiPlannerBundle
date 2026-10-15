@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <attributeMappings>
+        <attributeName>JourneyDecisioning_16jKY000000wmfX.SelectJourney_179KY00000117yz.input_subscriberSummary</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>subscriberSummary</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>JourneyDecisioning_16jKY000000wmfX.CreateJourneyContent_179KY00000117yz.input_subscriberSummary</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>subscriberSummary</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>JourneyDecisioning_16jKY000000wmfX.PersonalizeContext_179KY00000117yz.output_personalizedContext</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>subscriberSummary</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <description>Create targeted campaign messaging that’s tailored to each individual. This agent helps maximize customer engagement.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jKY000000wmfX</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>JourneyDecisioning_16jKY000000wmfX</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>JourneyDecisioning_16jKY000000wmfX</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Sorts customers to optimize engagement, and creates subject lines, preheaders, and body content that resonate with your customers.</description>
+        <developerName>JourneyDecisioning_16jKY000000wmfX</developerName>
+        <genAiPluginInstructions>
+            <description>If an individualId is provided, before performing another action call the createContextPersonalization action to retrieve {Marketing_Journey_Personalizat} context. Use the sourceId {0X9KY0000012kNv0AI} and subjectId JourneyDecisioning.</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Run the Select Journey action to select the journey or flow for each subscriber.</description>
+            <developerName>Instruction2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Run the Create Journey Content action to create content for each subscriber.</description>
+            <developerName>Instruction3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not use subscriberKey, individualId, and unifiedIndividualId interchangeably. They are their own distinct inputs.</description>
+            <developerName>Instruction4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction4</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not infer unifiedIndividualId from the subscriberSummary context variable.</description>
+            <developerName>Instruction5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction5</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If provided, individualId should always be used as input to relevant actions.</description>
+            <developerName>Instruction6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction6</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the Select Journey action was run, use its selectedJourneyId output as the selectedJourneyId input of the Create Journey Content action.</description>
+            <developerName>Instruction7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction7</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a description of the user is provided, use that as the subscriber summary.</description>
+            <developerName>Instruction8</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction8</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user mentions any of these use cases, set {selectJourneyConfigId} to the matching ID:
+*Intelligent Industry-Based Opportunity Acceleration → 1WoKY000000TN1K0AW
+*Account Expansion &amp; Cross-Sell Optimization → 1WoKY000000TN1P0AW</description>
+            <developerName>instructions_0_1772789850449</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1772789850449</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user mentions any of these subscribers, set the Individual ID {individualId} to the matching ID:
+*Ismael Espinosa → 0034I00001yxaYAQAY
+*Leticia Iglesias → 0034I00002QtWSfQAN
+*Sara Jimenez → 0034I00002QtWSeQAN</description>
+            <developerName>instructions_1_1772789850455</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_1_1772789850455</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user mentions any of these subscribers, set the Unified Individual ID {unifiedIndividualId} to the matching ID. Use this value to call Select Journey action:
+*Ismael Espinosa → 5fb98ca8a5b0b8455dce5f50fa79d404
+*Leticia Iglesias → a4af4f0c163cbd319d7f2d9f0eda4fd3
+*Sara Jimenez → 5218254907d776c1ea25a7b3244b8454</description>
+            <developerName>instructions_2_1772789850455</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_2_1772789850455</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>CreateJourneyContent_179KY00000117yz</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>PersonalizeContext_179KY00000117yz</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SelectJourney_179KY00000117yz</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>PersonalizeContext_179KY00000117yz</fullName>
+            <description>Improve agent decisioning with real-time access to summarized, personalization data.</description>
+            <developerName>PersonalizeContext_179KY00000117yz</developerName>
+            <invocationTarget>createContextPersonalization</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>PersonalizeContext</localDeveloperName>
+            <mappingAttributes>
+                <label>output_personalizedContext</label>
+                <name>output_personalizedContext</name>
+                <parameterName>personalizedContext</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Personalization: Get Context</masterLabel>
+            <progressIndicatorMessage>Creating a personalized context for you...</progressIndicatorMessage>
+            <source>Personalization__PersonalizeContext</source>
+        </localActions>
+        <localActions>
+            <fullName>SelectJourney_179KY00000117yz</fullName>
+            <description>Selects the best journey for a customer.</description>
+            <developerName>SelectJourney_179KY00000117yz</developerName>
+            <invocationTarget>selectJourney</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SelectJourney</localDeveloperName>
+            <mappingAttributes>
+                <label>input_subscriberSummary</label>
+                <name>input_subscriberSummary</name>
+                <parameterName>subscriberSummary</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Marketing Cloud: Select Journey</masterLabel>
+            <progressIndicatorMessage>Finding the best journey for your customer.</progressIndicatorMessage>
+            <source>MktCloud__SelectJourney</source>
+        </localActions>
+        <localActions>
+            <fullName>CreateJourneyContent_179KY00000117yz</fullName>
+            <description>Creates marketing content that’s tailored for each customer in a journey.</description>
+            <developerName>CreateJourneyContent_179KY00000117yz</developerName>
+            <invocationTarget>createJourneyContent</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateJourneyContent</localDeveloperName>
+            <mappingAttributes>
+                <label>input_subscriberSummary</label>
+                <name>input_subscriberSummary</name>
+                <parameterName>subscriberSummary</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Marketing Cloud: Create Journey Content</masterLabel>
+            <progressIndicatorMessage>Creating the best content for your customer.</progressIndicatorMessage>
+            <source>MktCloud__CreateJourneyContent</source>
+        </localActions>
+        <localDeveloperName>JourneyDecisioning</localDeveloperName>
+        <masterLabel>Marketing Cloud: Journey Decisioning</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Makes sorting decisions by adding users to the optimal journeys and flows, and then sending messages based on their persona.</scope>
+        <source>MktCloud__JourneyDecisioning</source>
+    </localTopics>
+    <masterLabel>Journey Decisioning Agent</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jKY000000wmfX</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jKY000000wmfX</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

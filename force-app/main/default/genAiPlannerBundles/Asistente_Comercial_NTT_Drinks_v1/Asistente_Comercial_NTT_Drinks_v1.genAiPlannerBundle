@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Asistente inteligente para el equipo comercial de NTT Drinks que ayuda a organizar y priorizar la jornada, preparar visitas y obtener una visión 360 de cada establecimiento.</description>
+    <localTopicLinks>
+        <genAiPluginName>Arranque_Jornada_Laboral_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>GeneralFAQ_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Priorizaci_n_inteligente_de_agenda_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Resumen_establecimiento_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>agent_router_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>ambiguous_question_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>off_topic_16jKY000000TV5h</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Arranque_Jornada_Laboral_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Ayuda al comercial a comenzar su jornada con una visión clara de sus tareas del día, listando todas las visitas previstas, identificando las prioritarias y recomendando dónde centrar la atención.
+Ejemplos de requests:
+- Quiero empezar mi jornada
+- Que visitas me tocan hoy?
+- ¿Qué tengo para hoy?
+- En qué debo enfocarme hoy?</description>
+        <developerName>Arranque_Jornada_Laboral_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4c</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4c</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Inicio_Jornada_Comercial_179KY000000UH4c</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Inicio_Jornada_Comercial_179KY000000UH4c</fullName>
+            <description>Genera un resumen estructurado y realista de la jornada de un comercial de NTT Drinks, incluyendo visitas planificadas, prioridades, recomendación de visita y principales focos del día.</description>
+            <developerName>Inicio_Jornada_Comercial_179KY000000UH4c</developerName>
+            <invocationTarget>Horeca_Inicio_Jornada_Comercial</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Inicio_Jornada_Comercial</localDeveloperName>
+            <masterLabel>Inicio Jornada Comercial</masterLabel>
+            <progressIndicatorMessage>Un momento por favor, estoy buscando en tu agenda la información solicitada</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>Arranque_Jornada_Laboral</localDeveloperName>
+        <masterLabel>Arranque Jornada Laboral</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>off_topic_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Redirect conversation to relevant topics when user request goes off-topic</description>
+        <developerName>off_topic_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4b</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4b</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>off_topic</localDeveloperName>
+        <masterLabel>Off Topic</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>agent_router_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Welcome the user and determine the appropriate subagent based on user input</description>
+        <developerName>agent_router_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {!@variables.currentAppName}
+Current Object Name: {!@variables.currentObjectApiName}
+Current Page Type: {!@variables.currentPageType}
+Current Record ID: {!@variables.currentRecordId}
+
+{{state.AgentScriptInternal_agent_instructions}}</description>
+            <developerName>instruction0_179KY000000UH4e</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4e</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>agent_router</localDeveloperName>
+        <masterLabel>Agent Router</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>Resumen_establecimiento_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Prepara al comercial antes de una visita proporcionando una visión 360º del establecimiento, con información relevante sobre consumo, surtido, visitas anteriores, promociones, SPV, oportunidades comerciales y principales temas a tratar.
+                  Ejemplos de requests:
+                  “Prepárame la visita a Bar Manolo.”
+                  “Dame un resumen 360 de Restaurante Atlántico.”
+                  “¿Qué debería saber antes de visitar Café Central?”
+                  “Hazme un briefing de Mesón O Porto.”
+                  “¿Qué tengo pendiente con Cervecería La Plaza?”
+                  “Resúmeme la situación de Taberna do Mar antes de la visita.”
+                  “¿Cómo está actualmente Restaurante Alameda?”
+                  “¿Qué oportunidades comerciales tengo en Bar Manolo?”
+                  “¿Qué surtido, consumo y promociones tiene Restaurante Atlántico?”
+                  “Prepárame los principales temas a tratar con Café Central.”
+                  “Dame el contexto comercial de Mesón O Porto.”
+                  “¿Hay alguna incidencia o compromiso pendiente con Cervecería La Plaza?”
+                  Para la respuesta: Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;</description>
+        <developerName>Resumen_establecimiento_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4d</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4d</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Resumen_360_establecimiento_179KY000000UH4d</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Resumen_360_establecimiento_179KY000000UH4d</fullName>
+            <description>Prepara al comercial antes de una visita proporcionando una visión 360º del establecimiento, con información relevante sobre consumo, surtido, visitas anteriores, promociones, SPV, oportunidades comerciales y principales temas a tratar.</description>
+            <developerName>Resumen_360_establecimiento_179KY000000UH4d</developerName>
+            <invocationTarget>Horeca_Resumen_establecimiento</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Resumen_360_establecimiento</localDeveloperName>
+            <masterLabel>Resumen 360 establecimiento</masterLabel>
+            <progressIndicatorMessage>Un momento por favor, estoy buscando la información solicitada</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>Resumen_establecimiento</localDeveloperName>
+        <masterLabel>Resumen establecimiento</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>Priorizaci_n_inteligente_de_agenda_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Analiza la agenda del promotor y prioriza las visitas en función de su relevancia comercial, urgencia y oportunidades detectadas, ayudándole a decidir qué establecimientos requieren mayor atención.
+                  Ejemplos de requests:
+                  &quot;puedes ayudarme a organizar mi agenda?&quot;
+                  &quot;ayúdame a organizar mi agenda de visitas&quot;
+                  “Ordéname la agenda de hoy por prioridad.”
+                  “¿Por qué establecimiento me recomiendas empezar?”
+                  “Tengo varias visitas esta mañana, ¿cuáles son las más importantes?”
+                  “Reorganiza mis visitas según prioridad comercial.”
+                  “¿Hay alguna visita que debería adelantar?”
+                  “Prioriza mi ruta de hoy.”</description>
+        <developerName>Priorizaci_n_inteligente_de_agenda_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4g</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4g</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Priorizaci_n_de_agenda_179KY000000UH4g</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Priorizaci_n_de_agenda_179KY000000UH4g</fullName>
+            <description>Analiza la agenda del promotor y prioriza las visitas en función de su relevancia comercial, urgencia y oportunidades detectadas, ayudándole a decidir qué establecimientos requieren mayor atención.</description>
+            <developerName>Priorizaci_n_de_agenda_179KY000000UH4g</developerName>
+            <invocationTarget>Horeca_Priorizaci_n_inteligente_de_agenda</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Priorizaci_n_de_agenda</localDeveloperName>
+            <masterLabel>Priorización de agenda</masterLabel>
+            <progressIndicatorMessage>Un momento por favor, estoy identificando las prioridades para hoy</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>Priorizaci_n_inteligente_de_agenda</localDeveloperName>
+        <masterLabel>Priorización inteligente de agenda</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>ambiguous_question_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Redirect conversation to relevant topics when user request is too ambiguous</description>
+        <developerName>ambiguous_question_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4f</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4f</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>ambiguous_question</localDeveloperName>
+        <masterLabel>Ambiguous Question</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>GeneralFAQ_16jKY000000TV5h</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Answers customer questions about company products, specifications, policies, or business procedures by searching knowledge articles or other data sources.</description>
+        <developerName>GeneralFAQ_16jKY000000TV5h</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+Presenta la información de forma **muy breve, natural y conversacional**, pensada para ser escuchada por voz. Prioriza solo los datos más relevantes para preparar la visita, evita enumeraciones largas, estructuras rígidas o exceso de detalle, y utiliza frases cortas y fluidas. La respuesta debe sonar como un asistente que pone al comercial en contexto en pocos segundos, no como la lectura de un informe.
+Si tienes que hablar sobre la cantidad de dinero de una promoción, por ejemplo &quot;0.50€&quot; di que son 50 centimos de descuento, evita decir &quot;0 euros&quot;
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH4h</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH4h</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>AnswerQuestionsWithKnowledge_179KY000000UH4h</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>AnswerQuestionsWithKnowledge_179KY000000UH4h</fullName>
+            <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: &apos;What is your return policy?&apos; &apos;How do I fix an issue?&apos; or &apos;What features does a product have?&apos;</description>
+            <developerName>AnswerQuestionsWithKnowledge_179KY000000UH4h</developerName>
+            <invocationTarget>streamKnowledgeSearch</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+            <masterLabel>Answer Questions with Knowledge</masterLabel>
+            <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+            <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+        </localActions>
+        <localDeveloperName>GeneralFAQ</localDeveloperName>
+        <masterLabel>General FAQ</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Asistente Comercial NTT Drinks</masterLabel>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <outboundRouteConfigs>
+            <escalationMessage>Lo siento, inténtalo de nuevo</escalationMessage>
+            <outboundRouteName>SDO_Service_Voice_Call_Omni_Routing</outboundRouteName>
+            <outboundRouteType>OmniChannelFlow</outboundRouteType>
+        </outboundRouteConfigs>
+        <surface>SurfaceAction__Telephony</surface>
+        <surfaceType>Telephony</surfaceType>
+    </plannerSurfaces>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    <voiceDefinition>
+        <developerName>voiceConfig_16jKY000000TV5h</developerName>
+        <inboundFillerWordsBool>false</inboundFillerWordsBool>
+        <inboundModel>sfdc_ai__Default_Nova_2_PhoneCall</inboundModel>
+        <label>voiceConfig_16jKY000000TV5h</label>
+        <languageCode>es</languageCode>
+        <outboundModel>sfdc_ai__Default_Eleven_Flash_V2_5</outboundModel>
+        <outboundSimilarity>0.75</outboundSimilarity>
+        <outboundSpeedNum>1.0</outboundSpeedNum>
+        <outboundStability>0.5</outboundStability>
+        <outboundVoice>Dani</outboundVoice>
+        <voiceIdentifier>7QQzpAyzlKTVrRzQJmTE</voiceIdentifier>
+    </voiceDefinition>
+</GenAiPlannerBundle>

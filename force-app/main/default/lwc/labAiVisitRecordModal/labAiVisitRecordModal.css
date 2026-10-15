@@ -1,0 +1,29 @@
+.slds-modal__content lightning-input,
+.slds-modal__content lightning-textarea,
+.slds-modal__content lightning-combobox,
+.slds-modal__content lightning-record-picker {
+    width: 100%;
+}
+
+.subcard {
+    border: 1px solid #dddbda;
+    border-radius: 0.35rem;
+    padding: 0.75rem;
+    background: #f8f8f8;
+}
+
+.subcard__header {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.subcard__title {
+    font-size: 0.9rem;
+}
+
+.slds-modal__footer lightning-button + lightning-button {
+    margin-left: 0.5rem;
+}

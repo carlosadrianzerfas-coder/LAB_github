@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Plan and create multi-series marketing campaigns from a written objective or marketing brief.</description>
+    <localTopicLinks>
+        <genAiPluginName>CampaignRefinement_16jKY000000TTw1</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>MarketingCampaigns_16jKY000000TTw1</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>ambiguous_question_16jKY000000TTw1</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>off_topic_16jKY000000TTw1</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>topic_selector_16jKY000000TTw1</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>off_topic_16jKY000000TTw1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Redirect conversation to relevant topics when user request goes off-topic</description>
+        <developerName>off_topic_16jKY000000TTw1</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.</description>
+            <developerName>instruction0_179KY000000UBF8</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UBF8</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>off_topic</localDeveloperName>
+        <masterLabel>Off Topic</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>ambiguous_question_16jKY000000TTw1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Redirect conversation to relevant topics when user request is too ambiguous</description>
+        <developerName>ambiguous_question_16jKY000000TTw1</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.</description>
+            <developerName>instruction0_179KY000000UBF5</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UBF5</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>ambiguous_question</localDeveloperName>
+        <masterLabel>Ambiguous Question</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>topic_selector_16jKY000000TTw1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Route to appropriate topic</description>
+        <developerName>topic_selector_16jKY000000TTw1</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.</description>
+            <developerName>instruction0_179KY000000UBF4</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UBF4</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>topic_selector</localDeveloperName>
+        <masterLabel>Topic Selector</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>CampaignRefinement_16jKY000000TTw1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Refine campaign previews</description>
+        <developerName>CampaignRefinement_16jKY000000TTw1</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.</description>
+            <developerName>instruction0_179KY000000UBF7</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UBF7</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>RefineCampaignPreview_179KY000000UBF7</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetRecordDetails_179KY000000UBF7</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY000000UBF7</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>UpdateRecordFields_179KY000000UBF7</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>UpdateRecordFields_179KY000000UBF7</fullName>
+            <description>Updates fields on a Salesforce CRM record. The action ExtractFieldsAndValuesFromUserInput must be called prior to this action to extract the record&apos;s fields and values.</description>
+            <developerName>UpdateRecordFields_179KY000000UBF7</developerName>
+            <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>UpdateRecordFields</localDeveloperName>
+            <masterLabel>Update Record</masterLabel>
+            <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+            <source>EmployeeCopilot__UpdateRecordFields</source>
+        </localActions>
+        <localActions>
+            <fullName>RefineCampaignPreview_179KY000000UBF7</fullName>
+            <description>Refines campaign preview based on user input.</description>
+            <developerName>RefineCampaignPreview_179KY000000UBF7</developerName>
+            <invocationTarget>MktCloud__RefineCampaignPreview</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>RefineCampaignPreview</localDeveloperName>
+            <masterLabel>Marketing Cloud: Refine Campaign Preview</masterLabel>
+            <progressIndicatorMessage>Refining your campaign preview</progressIndicatorMessage>
+            <source>EmployeeCopilot__RefineCampaignPreview</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179KY000000UBF7</fullName>
+            <description>Finds and retrieves Salesforce CRM records.</description>
+            <developerName>QueryRecords_179KY000000UBF7</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>GetRecordDetails_179KY000000UBF7</fullName>
+            <description>Generates a text blob containing record details, including object fields and values and records from related lists.</description>
+            <developerName>GetRecordDetails_179KY000000UBF7</developerName>
+            <invocationTarget>getDataForGrounding</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRecordDetails</localDeveloperName>
+            <masterLabel>Get Record Details</masterLabel>
+            <progressIndicatorMessage>Getting details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetRecordDetails</source>
+        </localActions>
+        <localDeveloperName>CampaignRefinement</localDeveloperName>
+        <masterLabel>Campaign Refinement</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>MarketingCampaigns_16jKY000000TTw1</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Generate and save briefs and campaigns</description>
+        <developerName>MarketingCampaigns_16jKY000000TTw1</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.</description>
+            <developerName>instruction0_179KY000000UBF6</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UBF6</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GenerateBrief_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyBusinessUnit_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SaveCampaign_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SaveBrief_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateCampaignFromBrief_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateBriefWithFile_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179KY000000UBF6</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>GenerateBrief_179KY000000UBF6</fullName>
+            <description>This action can create a campaign brief using a user-provided campaign objective.</description>
+            <developerName>GenerateBrief_179KY000000UBF6</developerName>
+            <invocationTarget>MktCloud__GenerateBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Drafting your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyBusinessUnit_179KY000000UBF6</fullName>
+            <description>Finds and returns a list of Marketing Cloud business units.</description>
+            <developerName>IdentifyBusinessUnit_179KY000000UBF6</developerName>
+            <invocationTarget>identifyBusinessUnit</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyBusinessUnit</localDeveloperName>
+            <masterLabel>Identify Business Unit</masterLabel>
+            <source>EmployeeCopilot__IdentifyBusinessUnit</source>
+        </localActions>
+        <localActions>
+            <fullName>SaveBrief_179KY000000UBF6</fullName>
+            <description>This action is used to save a brief that was generated.</description>
+            <developerName>SaveBrief_179KY000000UBF6</developerName>
+            <invocationTarget>saveBrief</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Saving your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179KY000000UBF6</fullName>
+            <description>Finds and retrieves Salesforce CRM records.</description>
+            <developerName>QueryRecords_179KY000000UBF6</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>SaveCampaign_179KY000000UBF6</fullName>
+            <description>This action saves the campaign and its draft components.</description>
+            <developerName>SaveCampaign_179KY000000UBF6</developerName>
+            <invocationTarget>MktCloud__SaveCampaign</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveCampaign</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign</masterLabel>
+            <progressIndicatorMessage>Saving the content</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveCampaign</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateCampaignFromBrief_179KY000000UBF6</fullName>
+            <description>This action creates a draft campaign based on the provided brief.</description>
+            <developerName>GenerateCampaignFromBrief_179KY000000UBF6</developerName>
+            <invocationTarget>MktCloud__GenerateCampaignFromBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateCampaignFromBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Preview</masterLabel>
+            <progressIndicatorMessage>Generating your campaign</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateCampaignFromBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179KY000000UBF6</fullName>
+            <description>Searches for Salesforce CRM records by name.</description>
+            <developerName>IdentifyRecordByName_179KY000000UBF6</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateBriefWithFile_179KY000000UBF6</fullName>
+            <description>This action can create a campaign brief using a user-provided campaign objective.</description>
+            <developerName>GenerateBriefWithFile_179KY000000UBF6</developerName>
+            <invocationTarget>MktCloud__GenerateBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateBriefWithFile</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Drafting your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateBrief</source>
+        </localActions>
+        <localDeveloperName>MarketingCampaigns</localDeveloperName>
+        <masterLabel>Marketing Campaigns</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Campaign Creation Agent</masterLabel>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Slack</surface>
+        <surfaceType>Slack</surfaceType>
+    </plannerSurfaces>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>

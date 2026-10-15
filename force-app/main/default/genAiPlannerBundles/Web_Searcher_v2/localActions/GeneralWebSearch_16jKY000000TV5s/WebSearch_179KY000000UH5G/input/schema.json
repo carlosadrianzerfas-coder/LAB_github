@@ -1,0 +1,40 @@
+{
+  "required" : [ "searchQuery" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "searchQuery" : {
+      "title" : "Search Query",
+      "description" : "Free-text input that specifies what the user wants to search for.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "Free-text string containing what the user wants to search for.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "searchProvider" : {
+      "title" : "Search Provider",
+      "description" : "The search provider used for web searches.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "The search provider used for web searches. This can only be configured by admin.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "siteFilter" : {
+      "title" : "Allowed Domains",
+      "description" : "sede.registradores.org,rmc.es,boe.es,seg-social.es,poderjudicial.es,aepd.es,dgt.es,eur-lex.europa.eu,noticias.juridicas.com,iberley.es",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "A comma-separated list of up to 10 allowed domains to filter web search results. This can only be configured by admin.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "excludedDomains" : {
+      "title" : "Excluded Domains",
+      "description" : "A comma-separated list of up to 10 domains to exclude from web search results.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "A comma-separated list of up to 10 domains to exclude from web search results. Results from these domains will be filtered out. This can only be configured by admin.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

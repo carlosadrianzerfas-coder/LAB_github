@@ -1,0 +1,77 @@
+# Technology configuration (Salesforce)
+# This file is intended to be referenced by framework rules/workflows.
+# It centralizes thresholds and commonly used commands to avoid hardcoding.
+
+coverage:
+  platform_min: 75
+  project_target: 85
+  critical_target: 90
+
+commands:
+  deploy:
+    description: "Deploy a specific metadata artifact (Phase 5 — compilation check, no tests)"
+    command: "sf project deploy start -d force-app/main/default/[exact-path] --test-level NoTestRun"
+    note: >
+      Replace [exact-path] with the concrete artifact path, e.g.:
+        objects/MyObject__c
+        classes/MyApexClass.cls
+        lwc/myComponent
+        flows/MyFlow.flow-meta.xml
+      Never deploy a full type directory (e.g., classes/) — always target the specific artifact.
+  deploy_manifest:
+    description: "Deploy using package.xml manifest (Step 3b — official group deployment record)"
+    command: "sf project deploy start --manifest work-item/[project-slug]/05-build/package.xml --test-level NoTestRun"
+    note: >
+      Run after all individual artifacts in the group have deployed successfully (Step 3).
+      Replace [project-slug] with the actual project slug.
+      No wildcards (*) are permitted in the manifest — all members must be named explicitly.
+  deploy_full:
+    description: "Deploy entire force-app directory (Phase 9 — production release only)"
+    command: "sf project deploy start --source-dir force-app --test-level RunLocalTests"
+  deploy_dependency_layers:
+    description: "Reference order for incremental deployment — deploy lower layers first"
+    layers:
+      - order: 1
+        name: "Schema"
+        metadata_types:
+          [
+            "objects",
+            "customMetadata",
+            "globalValueSets",
+            "customPermissions",
+            "standardValueSets"
+          ]
+      - order: 2
+        name: "Apex"
+        metadata_types: ["classes", "triggers"]
+        note: "Deploy utility/helper classes before service/handler classes; triggers last"
+      - order: 3
+        name: "UI"
+        metadata_types: ["lwc", "aura", "pages"]
+      - order: 4
+        name: "Automation"
+        metadata_types: ["flows", "workflows", "approvalProcesses"]
+      - order: 5
+        name: "Configuration"
+        metadata_types:
+          [
+            "permissionsets",
+            "layouts",
+            "tabs",
+            "applications",
+            "labels",
+            "staticresources",
+            "contentassets"
+          ]
+  test:
+    description: "Run all local tests with coverage"
+    command_human: "sf apex run test --test-level RunLocalTests --code-coverage --result-format human"
+    command_json: "sf apex run test --test-level RunLocalTests --code-coverage --result-format json"
+
+artifacts:
+  build_log: "work-item/[project-slug]/05-build/build-log.md"
+  package_xml: "work-item/[project-slug]/05-build/package.xml"
+  verification_report: "work-item/[project-slug]/06-verification/verification-report.md"
+  test_report: "work-item/[project-slug]/07-testing/test-report.md"
+  release_notes: "work-item/[project-slug]/09-release/release-notes.md"
+  retrospective: "work-item/[project-slug]/10-archive/retrospective.md"

@@ -1,0 +1,63 @@
+{
+  "required" : [ "userInput", "contentKey" ],
+  "properties" : {
+    "contentKey" : {
+      "title" : "Content Key",
+      "description" : "The unique identifier for a piece of saved or unsaved content. The content key is visible in Salesforce CMS on the content detail page of the associated piece of content.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "contentTypeFqn" : {
+      "title" : "Content Type",
+      "description" : "The content type that the user is actively creating or editing. For example: email, sms, landingPage.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "userInput" : {
+      "title" : "User Input",
+      "description" : "The complete original input received from the user. Don’t omit the input or remove words from it. For example, if the user input is \"Generate a new subject line for my promotional email,\" the input for the action must be \"Generate a new subject line for my promotional email.\"",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "targetAudience" : {
+      "title" : "Target Audience",
+      "description" : "The specific audience that the generated text is intended for. It can encompass a particular group of individuals or demographic segment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "keyMessage" : {
+      "title" : "Key Message",
+      "description" : "A concise statement or phrase that encapsulates the most important information or value propositions that you want to convey to the target segment. Never accept values of empty string (\"\") or \"null\". If unsure, you must ask the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "personality" : {
+      "title" : "Tone",
+      "description" : "The distinctive voice, style, personality, and manner of communication that the LLM uses to generate the content. For example, the tone can be casual, professional, inquisitive, or urgent.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "identity" : {
+      "title" : "Brand Identity",
+      "description" : "The essence of a brand that distinguishes it from competitors and resonates with customers.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "generatedSectionId" : {
+      "title" : "Generated Section Id",
+      "description" : "Section Id to be used for replacing section. Don't assume its value unless explicitly passed in the current request.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

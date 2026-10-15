@@ -1,0 +1,51 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "apexStatus" : {
+      "title" : "apexStatus",
+      "description" : "The status of the action KO if it fails OK if it works\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "If the Status is KO answer this to the user\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "limitsJSON" : {
+      "title" : "limitsJSON",
+      "description" : "JSON for internal purposes, do not show toi the user\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "limitsQuery" : {
+      "title" : "limitsQuery",
+      "description" : "Do not show this to the user.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "response" : {
+      "title" : "response",
+      "description" : "Este componente devuelve un objeto JSON estructurado que representa la capacidad crediticia y límites de riesgo del cliente. Para procesar la respuesta, utiliza las siguientes directrices:\n\n1. Estructura del JSON:\n\ndata: Contiene la información organizada por años. Cada año incluye un total (suma de límites) y un array items.\n\nitems: Cada objeto tiene productName (nombre comercial), apiName (ID técnico) y limit (valor en euros).\n\nwarning / availableYears: Si estos campos aparecen, indica que el año solicitado no existe. \"availableYears\" contiene la lista de años que sí tienen datos disponibles.\n\n2. Reglas de Negocio para el Agente:\n\nFormateo de Moneda: Presenta los valores de limit de forma legible (ej: 1.2M € o 500.000 €).\n\nComparativas: Si el JSON contiene varios años, calcula la diferencia porcentual o absoluta y destaca si el riesgo ha aumentado o disminuido.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

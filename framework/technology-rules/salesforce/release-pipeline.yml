@@ -1,0 +1,82 @@
+# Salesforce Release Pipeline Configuration
+#
+# Purpose:
+# - Define the ordered environment pipeline (alias/name only; no sandbox type required)
+# - Define the test strategy per hop
+# - Define what evidence must be recorded in Phase 09 release notes
+#
+# This file is referenced by:
+# - technology-rules/salesforce/rules.md (Phase 09 — Release)
+#
+# Notes:
+# - "env" values are org aliases/names as used by the Salesforce CLI (sf).
+# - If the pipeline is project-specific, duplicate this file under the project folder
+#   and reference it from the project context.
+
+version: 1
+
+verification:
+  static_analysis:
+    required: true
+    tools:
+      - name: pmd
+        description: Apex static analysis (Salesforce Code Analyzer / PMD)
+        fail_on_high: true
+      - name: eslint
+        description: LWC JavaScript static analysis
+        fail_on_error: true
+    policy: >
+      Phase 06 cannot be approved unless both PMD and ESLint have been executed
+      and no blocking violations are present.
+
+pipeline:
+  # Ordered environments. Use aliases that exist in your team / CI.
+  environments:
+    - env: dev
+      description: Developer integration environment (source development)
+    - env: int
+      description: Shared integration environment
+    - env: uat
+      description: User acceptance environment
+    - env: production
+      description: Production
+
+  # How to select the "next environment" for a release.
+  # Implementation depends on your process; this is a policy definition.
+  next_environment_rule:
+    type: manual_approval
+    details: >
+      The next environment is chosen by release manager approval, based on the
+      current pipeline position and the target branch/tag.
+
+test_strategy:
+  # Test strategy by hop.
+  # Allowed values typically include: NoTestRun | RunRelevantTests | RunLocalTests
+  hops:
+    - from: dev
+      to: int
+      validate_before_deploy: true
+      test_level: RunRelevantTests
+    - from: int
+      to: uat
+      validate_before_deploy: true
+      test_level: RunLocalTests
+    - from: uat
+      to: production
+      validate_before_deploy: true
+      test_level: RunLocalTests
+      quick_deploy_allowed: true
+      quick_deploy_window_days: 10
+
+evidence_requirements:
+  # Evidence that must be referenced in work-item/[project-slug]/09-release/release-notes.md
+  required_links:
+    - work-item/[project-slug]/05-build/build-log.md
+    - work-item/[project-slug]/06-verification/verification-report.md
+    - work-item/[project-slug]/07-testing/test-report.md
+  required_job_ids:
+    - validate_job_id
+    - deploy_job_id
+  additional_notes:
+    - Record the org alias used for the target environment.
+    - Record the test strategy executed for the hop (as defined above).

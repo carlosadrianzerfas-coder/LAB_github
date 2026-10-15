@@ -1,0 +1,48 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "endDate" : {
+      "title" : "endDate",
+      "description" : "The end date for the term-defined product provided in the request, which is formatted as yyyy-mm-dd.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "productId" : {
+      "title" : "productId",
+      "description" : "The Product2Id for the product to be added to the quote.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "productSellingModelID" : {
+      "title" : "productSellingModelID",
+      "description" : "The default product selling model ID associated with the product provided in the request.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "quantity" : {
+      "title" : "quantity",
+      "description" : "The quantity of the product to be added to the quote line. If no quantity is provided, default to 1.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "quoteId" : {
+      "title" : "quoteId",
+      "description" : "The quote Id of the quote record to be modified.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "startDate" : {
+      "title" : "startDate",
+      "description" : "The startDate, needed only for subscription based products. The format must be yyyy-mm-dd. always add it",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

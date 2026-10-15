@@ -1,0 +1,24 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Status" : {
+      "title" : "Status",
+      "description" : "The result of the action, OK if it has found records that matches the criteria. And KO if it has not.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "response" : {
+      "title" : "response",
+      "description" : "- If the status is OK then: - If a single Account is returned, use it and continue with the flow. - If multiple Accounts are returned, present the list of matched Accounts to the user and ask them to specify which one they mean. - Do NOT continue with any other action until the user selects or clarifies the intended Account. - If the status is KO then: - Inform the user about the error and do not proceed.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

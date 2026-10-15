@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Planner for ReAct-based Employee copilot.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jKY0000004Gih</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>ContentCreation_16jKY0000004Gih</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>GeneralCRM_16jKY0000004Gih</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>MarketingCampaignsTopic_16jKY0000004Gih</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>OOTBSingleRecordSummary_16jKY0000004Gih</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>GeneralCRM_16jKY0000004Gih</fullName>
+        <aiPluginUtterances>
+            <developerName>shownewleads</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>show-new-leads</masterLabel>
+            <utterance>Show new leads.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>gettopopportunities</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>get-top-opportunities</masterLabel>
+            <utterance>Get top amount opportunities.</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>Engages and interacts with the user about any request that could be CRM data related. This could be tasks such as identify and summarize records, answer queries, aggregate data, find and query objects, update records, or drafting and refining emails.</description>
+        <developerName>GeneralCRM_16jKY0000004Gih</developerName>
+        <genAiPluginInstructions>
+            <description>There are multiple available data retrieval functions at your disposal. You can use each one of them multiple times if needed. You should use functions as many times as necessary until you have all the data required to fulfill the request of the user. You can perform extra calls if you think you can get additional relevant information.</description>
+            <developerName>dataretrieval</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>data-retrieval</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not declare your intent i.e. &quot;I will now retrieve the data&quot; - Just fetch the data.</description>
+            <developerName>proceedwithaction</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>proceed-with-action</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Identify the object type (i.e., leads, opportunities, accounts) the user asks about. If unclear, confirm with the user and make a suggestion based on the query context and history.</description>
+            <developerName>identifyobjecttype</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>identify-object-type</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When only the name of a record is mentioned in the user request, you MUST call the IdentifyRecordByName action to get the necessary IDs.</description>
+            <developerName>identifyrecord</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>identify-record</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always call QueryRecords &amp; QueryRecordsWithAggregate passing plain natural language english as input. You must Include the record ID in the input if available.</description>
+            <developerName>queryrecords</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>query-records</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks for a summary or overview of a record, use GetRecordDetails to get an overview of the data of the record, then use other data retrieval actions as needed.</description>
+            <developerName>summary0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>summary0</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When asked for a summary on multiple records, you must iterate over all record IDs and for each one call GetRecordDetails.</description>
+            <developerName>summary1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>summary1</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user asks about activities you must call GetActivitiesTimeline.</description>
+            <developerName>activitytimeline0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline0</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When providing the Activity Types for GetActivitiesTimeline, choose all the types that are relevant to the user request. Examples - User Request 1 - &quot;What questions does John Doe have that need addressing?&quot;, Activity Types - &quot;Call&quot;, &quot;Email&quot;. User Request 2 - &quot;What are the next activities for John Doe?&quot;, Activity Types - &quot;Task&quot;, &quot;Event&quot;.</description>
+            <developerName>activitytimeline1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline1</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When asked about recent activities, you should provide the answer, starting from the last 30 days and ending on the current date, unless a specific date range is specified by the user.</description>
+            <developerName>activitytimeline2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>activity-timeline2</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When you are asked about a single Call, Meeting, Email or any other single specific activity, call GetActivityDetails. Do not call it for any other record type.</description>
+            <developerName>getactivitydetails0</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>get-activity-details0</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always use DraftOrReviseEmail when asked to generate a new email or revise a previously generated email.</description>
+            <developerName>draftorreviseemail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>draft-or-revise-email</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ExtractRecordFieldsAndValuesFromUserInput must be called prior to UpdateRecordFields.</description>
+            <developerName>updaterecord</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>update-record</masterLabel>
+            <sortOrder>12</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Avoid using structured lists, bullet points, or numbered lists. Instead, present the information in complete sentences and paragraphs as if you were writing an article or a report.</description>
+            <developerName>outputstyle</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>output-style</masterLabel>
+            <sortOrder>13</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>User questions which can be answered by knowledge articles or documents. These questions usually want information, instructions or guidance, including but not limited to customer questions about company information, polices and frequently asked questions.</description>
+            <developerName>answerquestions</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>answer-questions</masterLabel>
+            <sortOrder>14</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>IdentifyObjectByName_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetActivityDetails_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetActivitiesTimeline_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetRecordDetails_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>ExtractFieldsAndValuesFromUserInput_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>DraftOrReviseEmail_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecordsWithAggregate_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>UpdateRecordFields_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>AnswerQuestionsWithKnowledge_179KY0000004RYE</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>QueryRecords_179KY0000004RYE</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179KY0000004RYE</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecordsWithAggregate_179KY0000004RYE</fullName>
+            <description>Answers aggregation questions (such as count, sum, max, min, or average) about Salesforce CRM data based on the user input and specific conditions, such as field values. For example &apos;Find the number of open opportunities created in the last 5 days.&apos;</description>
+            <developerName>QueryRecordsWithAggregate_179KY0000004RYE</developerName>
+            <invocationTarget>queryRecordsWithAggregate</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecordsWithAggregate</localDeveloperName>
+            <masterLabel>Query Records with Aggregate</masterLabel>
+            <source>EmployeeCopilot__QueryRecordsWithAggregate</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179KY0000004RYE</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179KY0000004RYE</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>GetRecordDetails_179KY0000004RYE</fullName>
+            <description>Generates a text blob containing record details, including object fields and values and records from related lists.</description>
+            <developerName>GetRecordDetails_179KY0000004RYE</developerName>
+            <invocationTarget>getDataForGrounding</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRecordDetails</localDeveloperName>
+            <masterLabel>Get Record Details</masterLabel>
+            <progressIndicatorMessage>Getting details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetRecordDetails</source>
+        </localActions>
+        <localActions>
+            <fullName>ExtractFieldsAndValuesFromUserInput_179KY0000004RYE</fullName>
+            <description>Extracts Salesforce CRM record fields and their corresponding field values from the user input. This action must run before updateRecord to convert user input to a Salesforce sObject.</description>
+            <developerName>ExtractFieldsAndValuesFromUserInput_179KY0000004RYE</developerName>
+            <invocationTarget>getRecordFieldsAndValues</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>ExtractFieldsAndValuesFromUserInput</localDeveloperName>
+            <masterLabel>Extract Fields And Values From User Input</masterLabel>
+            <progressIndicatorMessage>Preparing your changes</progressIndicatorMessage>
+            <source>EmployeeCopilot__ExtractFieldsAndValuesFromUserInput</source>
+        </localActions>
+        <localActions>
+            <fullName>DraftOrReviseEmail_179KY0000004RYE</fullName>
+            <description>Creates an email draft or revises the latest generated email based on user input.</description>
+            <developerName>DraftOrReviseEmail_179KY0000004RYE</developerName>
+            <invocationTarget>getDraftOrReviseEmailPrompt</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>DraftOrReviseEmail</localDeveloperName>
+            <masterLabel>Draft or Revise Email</masterLabel>
+            <progressIndicatorMessage>Crafting your email</progressIndicatorMessage>
+            <source>EmployeeCopilot__DraftOrReviseEmail</source>
+        </localActions>
+        <localActions>
+            <fullName>UpdateRecordFields_179KY0000004RYE</fullName>
+            <description>Updates fields on a Salesforce CRM record. The action ExtractFieldsAndValuesFromUserInput must be called prior to this action to extract the record&apos;s fields and values.</description>
+            <developerName>UpdateRecordFields_179KY0000004RYE</developerName>
+            <invocationTarget>einsteinCopilotUpdateRecord</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>UpdateRecordFields</localDeveloperName>
+            <masterLabel>Update Record</masterLabel>
+            <progressIndicatorMessage>Making updates</progressIndicatorMessage>
+            <source>EmployeeCopilot__UpdateRecordFields</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyObjectByName_179KY0000004RYE</fullName>
+            <description>Finds the Salesforce object API name by extracting an object name from the user input.</description>
+            <developerName>IdentifyObjectByName_179KY0000004RYE</developerName>
+            <invocationTarget>identifyObject</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyObjectByName</localDeveloperName>
+            <masterLabel>Identify Object by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyObjectByName</source>
+        </localActions>
+        <localActions>
+            <fullName>AnswerQuestionsWithKnowledge_179KY0000004RYE</fullName>
+            <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+            <developerName>AnswerQuestionsWithKnowledge_179KY0000004RYE</developerName>
+            <invocationTarget>streamKnowledgeSearch</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+            <masterLabel>Answer Questions with Knowledge</masterLabel>
+            <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+            <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+        </localActions>
+        <localActions>
+            <fullName>GetActivityDetails_179KY0000004RYE</fullName>
+            <description>Provides data about an activity record, including its content and other key details. The record type is strictly limited to a Call, Email, Event, or Task.</description>
+            <developerName>GetActivityDetails_179KY0000004RYE</developerName>
+            <invocationTarget>getActivityDetails</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetActivityDetails</localDeveloperName>
+            <masterLabel>Get Activity Details</masterLabel>
+            <progressIndicatorMessage>Getting activity details</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetActivityDetails</source>
+        </localActions>
+        <localActions>
+            <fullName>GetActivitiesTimeline_179KY0000004RYE</fullName>
+            <description>Retrieve a timeline of all CRM activities associated with one record, including past and future activities.</description>
+            <developerName>GetActivitiesTimeline_179KY0000004RYE</developerName>
+            <invocationTarget>getActivitiesTimeline</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetActivitiesTimeline</localDeveloperName>
+            <masterLabel>Get Activities Timeline</masterLabel>
+            <progressIndicatorMessage>Retrieving activities</progressIndicatorMessage>
+            <source>EmployeeCopilot__GetActivitiesTimeline</source>
+        </localActions>
+        <localDeveloperName>GeneralCRM</localDeveloperName>
+        <masterLabel>General CRM</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to interact and answer questions for the user about anything Salesforce or CRM data related, combining all data retrieval functions. i.e: QueryRecords(), GetRecordDetails(), GetActivitiesTimeline(), GetActivityDetails()</scope>
+        <source>EmployeeCopilot__GeneralCRM</source>
+    </localTopics>
+    <localTopics>
+        <fullName>MarketingCampaignsTopic_16jKY0000004Gih</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Users who want to generate, make, create, summarize, or bootstrap their marketing campaigns or briefs should use this topic.</description>
+        <developerName>MarketingCampaignsTopic_16jKY0000004Gih</developerName>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Brief, Campaign Brief, or Marketing Brief, ALWAYS start by calling the GenerateBrief action, ALWAYS use the users prompt for the campaign objective, ONLY present an input if the objective is not included in the users prompt. If an objective is not included in the prompt, ask for the objective in the chat, do not show an input box.</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>AUTOMATICALLY call the SaveBrief action after GenerateBrief</description>
+            <developerName>Instruction2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Campaign or Marketing Campaign without including a reference to a Brief (either in page context or history), ALWAYS start by calling the GenerateBrief action to first create and save a Brief that will be used in the GenerateCampaignFromBrief action, ALWAYS use the users prompt for the campaign objective, ONLY present an input if the objective is not included in the users prompt. If an objective is not included in the prompt, ask for the objective in the chat, do not show an input box.</description>
+            <developerName>Instruction3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to generate/make/create/bootstrap a Campaign or Marketing Campaign and they reference a specific Brief (or a Brief record in page context or history), ALWAYS start by calling the GenerateCampaignFromBrief action using the Brief that the user mentions.</description>
+            <developerName>Instruction4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction4</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>AUTOMATICALLY call the SaveCampaign action after GenerateCampaignFromBrief</description>
+            <developerName>Instruction5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction5</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user asks to summarize/review/recap/outline/sum up a Campaign, ALWAYS start by calling the IdentifyRecordByName action and return the recordID.</description>
+            <developerName>Instruction6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction6</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If an action requires a recordID or campaignID, use the IdentifyRecordByName action first to find the recordID.</description>
+            <developerName>Instruction7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction7</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GenerateBrief_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateCampaignFromBrief_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SummarizeCampaign_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GenerateCampaignInsights_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SaveCampaign_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SaveBrief_179KY0000004RYH</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>GenerateCampaignFromBrief_179KY0000004RYH</fullName>
+            <description>This action creates a draft campaign based on the provided brief.</description>
+            <developerName>GenerateCampaignFromBrief_179KY0000004RYH</developerName>
+            <invocationTarget>MktCloud__GenerateCampaignFromBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateCampaignFromBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Create a Campaign from a Brief</masterLabel>
+            <progressIndicatorMessage>Generating your campaign</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateCampaignFromBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179KY0000004RYH</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179KY0000004RYH</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localActions>
+            <fullName>SummarizeCampaign_179KY0000004RYH</fullName>
+            <description>Creates a summary of the campaign that includes flow name, open rates, click through rates, sent and not sent information, the number of bounces, and number of unsubscribed and opted-out messages.</description>
+            <developerName>SummarizeCampaign_179KY0000004RYH</developerName>
+            <invocationTarget>summarizeCampaign</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SummarizeCampaign</localDeveloperName>
+            <masterLabel>Marketing Cloud: Summarize a Campaign</masterLabel>
+            <progressIndicatorMessage>Generating your campaign summary</progressIndicatorMessage>
+            <source>EmployeeCopilot__SummarizeCampaign</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateCampaignInsights_179KY0000004RYH</fullName>
+            <description>Generates campaign insights based on engagement and performance data of a specific campaign.</description>
+            <developerName>GenerateCampaignInsights_179KY0000004RYH</developerName>
+            <invocationTarget>MktCloud__GenerateCampaignInsights</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateCampaignInsights</localDeveloperName>
+            <masterLabel>Marketing Cloud: Generate Campaign Insights</masterLabel>
+            <progressIndicatorMessage>Analyzing the campaign</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateCampaignInsights</source>
+        </localActions>
+        <localActions>
+            <fullName>GenerateBrief_179KY0000004RYH</fullName>
+            <description>This action can create a campaign brief using a user-provided campaign objective.</description>
+            <developerName>GenerateBrief_179KY0000004RYH</developerName>
+            <invocationTarget>MktCloud__GenerateBrief</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GenerateBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft a Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Drafting your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__GenerateBrief</source>
+        </localActions>
+        <localActions>
+            <fullName>SaveCampaign_179KY0000004RYH</fullName>
+            <description>This action saves the campaign and its draft components.</description>
+            <developerName>SaveCampaign_179KY0000004RYH</developerName>
+            <invocationTarget>MktCloud__SaveCampaign</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveCampaign</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign</masterLabel>
+            <progressIndicatorMessage>Saving the content</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveCampaign</source>
+        </localActions>
+        <localActions>
+            <fullName>SaveBrief_179KY0000004RYH</fullName>
+            <description>This action is used to save a brief that was generated using the generateBrief action.</description>
+            <developerName>SaveBrief_179KY0000004RYH</developerName>
+            <invocationTarget>saveBrief</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SaveBrief</localDeveloperName>
+            <masterLabel>Marketing Cloud: Save Campaign Brief</masterLabel>
+            <progressIndicatorMessage>Saving your campaign brief</progressIndicatorMessage>
+            <source>EmployeeCopilot__SaveBrief</source>
+        </localActions>
+        <localDeveloperName>MarketingCampaignsTopic</localDeveloperName>
+        <masterLabel>Marketing Cloud: Campaign Planning</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to assist users in generating, making, creating, summarize, bootstrapping, or analyzing their Salesforce Marketing Campaign and/or Brief objects.</scope>
+        <source>EmployeeCopilot__MarketingCampaignsTopic</source>
+    </localTopics>
+    <localTopics>
+        <fullName>ContentCreation_16jKY0000004Gih</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Interacts with the user to draft or revise content from Salesforce CMS in the content builder.</description>
+        <developerName>ContentCreation_16jKY0000004Gih</developerName>
+        <genAiPluginInstructions>
+            <description>Never use this topic to draft or refine Sales emails.</description>
+            <developerName>neversalesemail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>never-sales-email</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a specific property or element for generation cannot be identified, encourage the user to make a more explicit request.</description>
+            <developerName>unknownpropertyhandling</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>unknown-property-handling</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user asks for a refinement, use the conversation history to identify the previous user request that the refinement pertains to, and include that request in the &apos;userInput&apos; input variable if applicable.</description>
+            <developerName>useuserresponse</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>use-user-response</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a user uses &quot;this&quot; in a request (for example, &quot;Draft a different version of this paragraph,&quot; or &quot;Revise the text in this section&quot;) the user likely intends to modify the text in the currently selected component or the most recently generated section. Do not ask the user to provide a value.</description>
+            <developerName>handlecontextualthis</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>handle-contextual-this</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>DraftOrRefineTextForProperty_179KY0000004RYG</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>CreateOrRefineSectionWithContent_179KY0000004RYG</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>CreateOrRefineSection_179KY0000004RYG</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>CreateOrRefineSection_179KY0000004RYG</fullName>
+            <description>Handles requests for the generation and refinement of a section and components within the section in the application where users create emails, landing pages, and other types of content. These requests can include a specified number of columns in the section, and specified components to be included in the section, such as heading, paragraph, image or button components. This action should not be used when text generation is requested as part of user request. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object.</description>
+            <developerName>CreateOrRefineSection_179KY0000004RYG</developerName>
+            <invocationTarget>createOrRefineSectionWithContent</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateOrRefineSection</localDeveloperName>
+            <masterLabel>Marketing Cloud: Create Section</masterLabel>
+            <progressIndicatorMessage>Drafting your content</progressIndicatorMessage>
+            <source>sfdc_cms__CreateOrRefineSection</source>
+        </localActions>
+        <localActions>
+            <fullName>DraftOrRefineTextForProperty_179KY0000004RYG</fullName>
+            <description>Handles requests for text generation and refinement in the application where users create emails, SMS messages, and other types of content. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object</description>
+            <developerName>DraftOrRefineTextForProperty_179KY0000004RYG</developerName>
+            <invocationTarget>generateOrRefineTextForProperty</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>DraftOrRefineTextForProperty</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft Content</masterLabel>
+            <progressIndicatorMessage>Drafting your content</progressIndicatorMessage>
+            <source>sfdc_cms__DraftOrRefineTextForProperty</source>
+        </localActions>
+        <localActions>
+            <fullName>CreateOrRefineSectionWithContent_179KY0000004RYG</fullName>
+            <description>Handles requests for generation and refinement of components with text and blocks with text in the application where users create emails, landing pages, and other types of content. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object</description>
+            <developerName>CreateOrRefineSectionWithContent_179KY0000004RYG</developerName>
+            <invocationTarget>createOrRefineSectionWithContent</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateOrRefineSectionWithContent</localDeveloperName>
+            <masterLabel>Marketing Cloud: Create Section with Content</masterLabel>
+            <progressIndicatorMessage>Creating your section</progressIndicatorMessage>
+            <source>sfdc_cms__CreateOrRefineSectionWithContent</source>
+        </localActions>
+        <localDeveloperName>ContentCreation</localDeveloperName>
+        <masterLabel>Content Creation</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to handle requests to generate new or refine existing pieces of content in the content builder. This could be tasks such as drafting subject lines or preheaders, optimizing SMS messages, generating headings, paragraphs, and button text, and creating blocks or components with or without corresponding text for emails or landing pages.</scope>
+        <source>sfdc_cms__ContentCreation</source>
+    </localTopics>
+    <localTopics>
+        <fullName>OOTBSingleRecordSummary_16jKY0000004Gih</fullName>
+        <aiPluginUtterances>
+            <developerName>utterance1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance1</masterLabel>
+            <utterance>Give me a quick summary of this record.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance2</masterLabel>
+            <utterance>Provide an overview of this record.</utterance>
+        </aiPluginUtterances>
+        <aiPluginUtterances>
+            <developerName>utterance3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>utterance3</masterLabel>
+            <utterance>Share highlights for this record.</utterance>
+        </aiPluginUtterances>
+        <canEscalate>false</canEscalate>
+        <description>This topic is to help the user generate an out of the box summary for a SINGLE record. Use this topic when the user is requesting to summarize a single record without any additional instructions or specific filtering instructions.</description>
+        <developerName>OOTBSingleRecordSummary_16jKY0000004Gih</developerName>
+        <genAiPluginInstructions>
+            <description>Always try to ask clarifying questions when trying to resolve the record</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>QueryRecords_179KY0000004RYF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyRecordByName_179KY0000004RYF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>QueryRecordsWithAggregate_179KY0000004RYF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SummarizeRecord_179KY0000004RYF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>IdentifyObjectByName_179KY0000004RYF</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>QueryRecordsWithAggregate_179KY0000004RYF</fullName>
+            <description>Answers aggregation questions (such as count, sum, max, min, or average) about Salesforce CRM data based on the user input and specific conditions, such as field values. For example &apos;Find the number of open opportunities created in the last 5 days.&apos;</description>
+            <developerName>QueryRecordsWithAggregate_179KY0000004RYF</developerName>
+            <invocationTarget>queryRecordsWithAggregate</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecordsWithAggregate</localDeveloperName>
+            <masterLabel>Query Records with Aggregate</masterLabel>
+            <source>EmployeeCopilot__QueryRecordsWithAggregate</source>
+        </localActions>
+        <localActions>
+            <fullName>SummarizeRecord_179KY0000004RYF</fullName>
+            <description>Summarizes a single Salesforce CRM record. You must call summarizeRecord only if the user explicitly asks for a summary (e.g: &apos;Summary&apos;, &apos;Recap&apos;, &apos;Highlights&apos;). This action should be called only when there isn&apos;t a more specific summarization action.</description>
+            <developerName>SummarizeRecord_179KY0000004RYF</developerName>
+            <invocationTarget>getRecordSummarizationPrompt</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SummarizeRecord</localDeveloperName>
+            <masterLabel>Summarize Record</masterLabel>
+            <progressIndicatorMessage>Summarizing</progressIndicatorMessage>
+            <source>EmployeeCopilot__SummarizeRecord</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyObjectByName_179KY0000004RYF</fullName>
+            <description>Finds the Salesforce object API name by extracting an object name from the user input.</description>
+            <developerName>IdentifyObjectByName_179KY0000004RYF</developerName>
+            <invocationTarget>identifyObject</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyObjectByName</localDeveloperName>
+            <masterLabel>Identify Object by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyObjectByName</source>
+        </localActions>
+        <localActions>
+            <fullName>QueryRecords_179KY0000004RYF</fullName>
+            <description>Finds and retrieves Salesforce CRM records based on user input and specific conditions, such as field values. This action automatically identifies the correct records and object type. e.g. &apos;Find all open opportunities created in the last 5 days sorted by created date.&apos;</description>
+            <developerName>QueryRecords_179KY0000004RYF</developerName>
+            <invocationTarget>queryRecords</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>QueryRecords</localDeveloperName>
+            <masterLabel>Query Records</masterLabel>
+            <source>EmployeeCopilot__QueryRecords</source>
+        </localActions>
+        <localActions>
+            <fullName>IdentifyRecordByName_179KY0000004RYF</fullName>
+            <description>Searches for Salesforce CRM records by name and returns a list of matching Salesforce CRM record IDs.</description>
+            <developerName>IdentifyRecordByName_179KY0000004RYF</developerName>
+            <invocationTarget>identifyRecordByName</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>IdentifyRecordByName</localDeveloperName>
+            <masterLabel>Identify Record by Name</masterLabel>
+            <source>EmployeeCopilot__IdentifyRecordByName</source>
+        </localActions>
+        <localDeveloperName>OOTBSingleRecordSummary</localDeveloperName>
+        <masterLabel>Single Record Summary</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to provide a rich summary of a Salesforce CRM record</scope>
+        <source>EmployeeCopilot__OOTBSingleRecordSummary</source>
+    </localTopics>
+    <masterLabel>EmployeeCopilotPlanner</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jKY0000004Gih</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jKY0000004Gih</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

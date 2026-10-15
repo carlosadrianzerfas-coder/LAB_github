@@ -1,0 +1,79 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "briefName" : {
+      "title" : "campaignBriefName",
+      "description" : "A draft of the campaign brief name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefDescription" : {
+      "title" : "campaignBriefDescription",
+      "description" : "A draft of the campaign brief description",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefKeyMessage" : {
+      "title" : "campaignBriefKeyMessage",
+      "description" : "A draft of the campaign brief key message",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefTargetAudience" : {
+      "title" : "campaignBriefTargetAudience",
+      "description" : "A draft of the campaign brief target audience",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefPrimaryGoal" : {
+      "title" : "campaignBriefPrimaryGoal",
+      "description" : "A draft of the campaign brief primary goal",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefPrimaryKPI" : {
+      "title" : "campaignBriefPrimaryKPI",
+      "description" : "A draft of the campaign brief primary KPI",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefAgentGuardrails" : {
+      "title" : "campaignBriefAgentGuardRails",
+      "description" : "A draft of the campaign brief agent guardrails",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefPrimaryCTAs" : {
+      "title" : "campaignBriefPrimaryCTAs",
+      "description" : "A draft of the campaign brief primary call-to-actions",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefPriority" : {
+      "title" : "campaignBriefPriority",
+      "description" : "A draft of the campaign brief piority",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

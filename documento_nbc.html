@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comité de Compromiso de Crédito (NBC) - InnovaTech</title>
+    <style>
+        @page { size: A4; margin: 12mm 15mm; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #1a202c;
+            line-height: 1.35;
+            font-size: 8.8pt;
+            margin: 0;
+            padding: 15px;
+        }
+        .header {
+            border-bottom: 2.5px solid #004481;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .header h1 {
+            font-size: 14pt;
+            color: #002B49;
+            margin: 0 0 3px 0;
+            text-transform: uppercase;
+        }
+        .header .subtitle { font-size: 8pt; font-weight: bold; color: #4a5568; }
+        .badge-conf {
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 3px 7px;
+            font-size: 7.5pt;
+            font-weight: bold;
+            border-radius: 3px;
+            border: 1px solid #f87171;
+        }
+        h2 {
+            font-size: 9.8pt;
+            color: #004481;
+            margin: 10px 0 5px 0;
+            border-left: 3px solid #004481;
+            padding-left: 6px;
+            text-transform: uppercase;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            font-size: 8pt;
+        }
+        th, td { border: 1px solid #cbd5e1; padding: 4px 6px; text-align: left; }
+        th { background-color: #004481; color: white; font-weight: 600; }
+        .table-sub th { background-color: #e2e8f0; color: #1e293b; }
+        .info-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; margin-bottom: 8px; }
+        .charts-container { display: flex; gap: 12px; margin: 10px 0; justify-content: space-between; }
+        .chart-box {
+            flex: 1;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 6px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .chart-box h3 { font-size: 8pt; color: #002B49; margin: 0 0 4px 0; }
+        ul { margin: 3px 0 6px 16px; padding: 0; }
+        li { margin-bottom: 3px; }
+        .resolution {
+            background-color: #f0fdf4;
+            border: 1.5px solid #22c55e;
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-top: 10px;
+        }
+        .print-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background-color: #004481;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            font-weight: bold;
+            font-size: 10pt;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        @media print {
+            .print-btn { display: none; }
+            body { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">📥 Guardar como PDF (Ctrl+P)</button>
+
+    <div class="header">
+        <div>
+            <h1>Expediente de Comité de Compromiso de Crédito (NBC)</h1>
+            <div class="subtitle">GLOBAL CORPORATE & INVESTMENT BANKING — FACILIDAD SINDICADA SOSTENIBLE (SLL)</div>
+        </div>
+        <div>
+            <span class="badge-conf">ESTRICTAMENTE CONFIDENCIAL / COMITÉ EJECUTIVO</span>
+        </div>
+    </div>
+
+    <table class="info-card">
+        <tr>
+            <td width="18%"><strong>Prestatario / Grupo:</strong></td>
+            <td width="32%">InnovaTech Solutions & Energy Group S.A.</td>
+            <td width="18%"><strong>Fecha de Comité:</strong></td>
+            <td width="32%">15/09/2026</td>
+        </tr>
+        <tr>
+            <td><strong>Rating Interno:</strong></td>
+            <td>BBB+ (Riesgo Corporativo Medio-Bajo)</td>
+            <td><strong>Límite Solicitado:</strong></td>
+            <td><strong style="color: #004481; font-size: 9.5pt;">120.000.000 EUR</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Finalidad:</strong></td>
+            <td>Refinanciación de deuda y Plan Capex Renovable</td>
+            <td><strong>Participación Banco:</strong></td>
+            <td>Underwriting 40 M€ (Final Hold: 25 M€)</td>
+        </tr>
+    </table>
+
+    <h2>1. Estructura de Tramos e Importes Aprobados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tramo</th>
+                <th>Modalidad</th>
+                <th>Importe</th>
+                <th>Plazo / Vencimiento</th>
+                <th>Precio Base (Spread)</th>
+                <th>Comisión Compromiso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Tramo A</strong></td>
+                <td>Term Loan (Préstamo Amortizable)</td>
+                <td>80.000.000 €</td>
+                <td>5 años (Bullet al vcto.)</td>
+                <td>Euribor 3M + 1.65%</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td><strong>Tramo B</strong></td>
+                <td>Revolving Credit Facility (RCF)</td>
+                <td>40.000.000 €</td>
+                <td>3 años (Opción +1+1)</td>
+                <td>Euribor 3M + 1.45%</td>
+                <td>0.45% anual s/ no dispuesto</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="charts-container">
+        <div class="chart-box">
+            <h3>Gráfico 1: Desglose de Financiación por Facilidad (Total 120 M€)</h3>
+            <svg width="270" height="95" viewBox="0 0 270 95">
+                <rect x="10" y="15" width="160" height="24" fill="#004481" rx="3"/>
+                <text x="175" y="32" font-size="8" font-family="sans-serif" font-weight="bold" fill="#004481">Tramo A: 80 M€ (66.7%)</text>
+                <rect x="10" y="48" width="80" height="24" fill="#22c55e" rx="3"/>
+                <text x="95" y="65" font-size="8" font-family="sans-serif" font-weight="bold" fill="#15803d">Tramo B: 40 M€ (33.3%)</text>
+                <line x1="10" y1="78" x2="260" y2="78" stroke="#94a3b8" stroke-width="1"/>
+                <text x="10" y="88" font-size="7" fill="#64748b">0 M€</text>
+                <text x="90" y="88" font-size="7" fill="#64748b">40 M€</text>
+                <text x="170" y="88" font-size="7" fill="#64748b">80 M€</text>
+            </svg>
+        </div>
+
+        <div class="chart-box">
+            <h3>Gráfico 2: Trayectoria Deuda Neta / EBITDA vs. Límite Covenant</h3>
+            <svg width="290" height="95" viewBox="0 0 290 95">
+                <line x1="30" y1="10" x2="30" y2="75" stroke="#94a3b8" stroke-width="1"/>
+                <line x1="30" y1="75" x2="280" y2="75" stroke="#94a3b8" stroke-width="1"/>
+                <line x1="30" y1="22" x2="280" y2="22" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <text x="180" y="18" font-size="6.5" font-weight="bold" fill="#dc2626">Covenant Máximo: 3.25x</text>
+                <line x1="30" y1="36" x2="280" y2="36" stroke="#ea580c" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="180" y="33" font-size="6.5" fill="#ea580c">Umbral Dividendos: 2.80x</text>
+                
+                <polyline points="45,46 100,43 160,54 220,62 270,68" fill="none" stroke="#004481" stroke-width="2"/>
+                <circle cx="45" cy="46" r="2.5" fill="#004481"/>
+                <circle cx="100" cy="43" r="2.5" fill="#004481"/>
+                <circle cx="160" cy="54" r="2.5" fill="#004481"/>
+                <circle cx="220" cy="62" r="2.5" fill="#004481"/>
+                <circle cx="270" cy="68" r="2.5" fill="#004481"/>
+                
+                <text x="40" y="42" font-size="6.5" font-weight="bold" fill="#004481">2.4x</text>
+                <text x="95" y="39" font-size="6.5" font-weight="bold" fill="#004481">2.5x</text>
+                <text x="155" y="50" font-size="6.5" font-weight="bold" fill="#004481">2.1x</text>
+                <text x="215" y="58" font-size="6.5" font-weight="bold" fill="#004481">1.8x</text>
+                <text x="260" y="65" font-size="6.5" font-weight="bold" fill="#004481">1.5x</text>
+                
+                <text x="35" y="85" font-size="6.5" fill="#475569">2026E</text>
+                <text x="90" y="85" font-size="6.5" fill="#475569">2027E</text>
+                <text x="150" y="85" font-size="6.5" fill="#475569">2028E</text>
+                <text x="210" y="85" font-size="6.5" fill="#475569">2029E</text>
+                <text x="260" y="85" font-size="6.5" fill="#475569">2030E</text>
+            </svg>
+        </div>
+    </div>
+
+    <h2>2. Mecanismo de Precios Escalonado (Pricing Grid) y Ajuste ESG</h2>
+    <table class="table-sub">
+        <thead>
+            <tr>
+                <th>Ratio Deuda Neta / EBITDA</th>
+                <th>Margen Tramo A (Spread)</th>
+                <th>Margen Tramo B (Spread)</th>
+                <th>Estado de Ratio Proyectado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&gt; 3.00x</td>
+                <td>Euribor + 1.95%</td>
+                <td>Euribor + 1.75%</td>
+                <td>Alerta de Apalancamiento Alto</td>
+            </tr>
+            <tr style="background-color: #f1f5f9; font-weight: bold;">
+                <td>&gt; 2.50x y &le; 3.00x</td>
+                <td>Euribor + 1.65% (Nivel Inicial)</td>
+                <td>Euribor + 1.45% (Nivel Inicial)</td>
+                <td>Rango Actual de Entrada (2026)</td>
+            </tr>
+            <tr>
+                <td>&gt; 2.00x y &le; 2.50x</td>
+                <td>Euribor + 1.40%</td>
+                <td>Euribor + 1.20%</td>
+                <td>Objetivo 2027-2028</td>
+            </tr>
+            <tr>
+                <td>&le; 2.00x</td>
+                <td>Euribor + 1.15%</td>
+                <td>Euribor + 0.95%</td>
+                <td>Objetivo 2029-2030</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>Ajuste por Sostenibilidad (Ratchet ESG):</strong> Reducción de huella Scope 1 & 2 (-8% anual) y paridad directiva. Cumplir ambos bonifica <strong>-10 bps</strong>; incumplir uno o ambos penaliza <strong>+10 bps</strong>.</p>
+
+    <h2>3. Covenants Financieros y Restricciones Operativas</h2>
+    <ul>
+        <li><strong>Leverage Ratio:</strong> Deuda Neta / EBITDA máximo de <strong>3.25x</strong> en todo trimestre.</li>
+        <li><strong>Interest Coverage Ratio (ICR):</strong> EBITDA / Gastos Financieros Netos superior a <strong>4.00x</strong>.</li>
+        <li><strong>Inversiones M&A:</strong> Cap máximo anual de <strong>25.000.000 EUR</strong>. Transacciones superiores requieren <strong>mayoría cualificada del 66.6%</strong> del sindicato.</li>
+        <li><strong>Dividendos:</strong> Permitidos solo si el ratio resultante es inferior a <strong>2.80x</strong>.</li>
+    </ul>
+
+    <h2>4. Mitigantes de Riesgo y Cobertura (Hedging)</h2>
+    <ul>
+        <li><strong>Garantías Reales:</strong> Pignoración de primer rango sobre cuentas bancarias de concentración y comfort letters de la matriz.</li>
+        <li><strong>Derivados de Tipo de Interés (IRS):</strong> Cobertura obligatoria (Swaps/Caps) por al menos el <strong>60% del saldo dispuesto del Tramo A</strong> durante un mínimo de 3 años. <em>(Nota: No se pactan coberturas obligatorias sobre divisas FX al operar en zona euro).</em></li>
+    </ul>
+
+    <div class="resolution">
+        <strong>5. DICTAMEN DEL COMITÉ DE COMPROMISO DE CRÉDITO (NBC):</strong>
+        <p style="margin: 2px 0 0 0;"><strong>APROBACIÓN FAVORABLE CONDICIONADA.</strong> Underwriting autorizado: <strong>40.000.000 EUR</strong> (Final Hold: <strong>25.000.000 EUR</strong>).</p>
+    </div>
+
+</body>
+</html>

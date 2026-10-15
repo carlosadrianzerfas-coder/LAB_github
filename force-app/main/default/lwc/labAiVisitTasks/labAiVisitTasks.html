@@ -1,0 +1,147 @@
+<template>
+    <!-- ===================== SUGGESTED TASKS ===================== -->
+    <div class="section-header slds-m-top_large">
+        <div class="section-title">Suggested Tasks</div>
+        <div class="section-actions">
+            <lightning-button
+                variant="neutral"
+                label="Apply Suggested Tasks in Salesforce"
+                icon-name="utility:save"
+                class="section-action-button"
+                onclick={handleApplyClick}>
+            </lightning-button>
+        </div>
+    </div>
+
+    <div class="record-grid">
+
+        <!-- Existing tasks -->
+        <template if:true={hasTasks}>
+            <template for:each={tasks} for:item="t" for:index="index">
+                <article key={t.id} class={t.cardClass}>
+                    <div class="record-card__header">
+
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <lightning-icon
+                                    icon-name="standard:task"
+                                    size="small">
+                                </lightning-icon>
+                            </div>
+
+                            <div class="slds-media__body">
+                                <h3 class="record-card__header-title">
+                                    {t.subject}
+                                </h3>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    Task related to the visit
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="record-card__actions">
+                            <template if:true={t.pendingDelete}>
+                                <lightning-button-icon
+                                    icon-name="utility:undo"
+                                    alternative-text="Undo delete"
+                                    variant="border-filled"
+                                    data-id={t.id}
+                                    data-index={index}
+                                    onclick={handleRestoreClick}>
+                                </lightning-button-icon>
+                            </template>
+                            <template if:false={t.pendingDelete}>
+                                <lightning-button-icon
+                                    icon-name="utility:edit"
+                                    alternative-text="Edit"
+                                    variant="border-filled"
+                                    data-id={t.id}
+                                    data-index={index}
+                                    onclick={handleEditClick}>
+                                </lightning-button-icon>
+
+                                <lightning-button-icon
+                                    icon-name="utility:delete"
+                                    alternative-text="Delete"
+                                    variant="border-filled"
+                                    data-id={t.id}
+                                    data-index={index}
+                                    onclick={handleDeleteClick}>
+                                </lightning-button-icon>
+                            </template>
+                        </div>
+
+                    </div>
+
+                    <div class="record-card__body">
+                        <template if:false={t.pendingDelete}>
+                            <p class="slds-text-body_small">
+                                <b>Due Date:</b> {t.dueDate}
+                            </p>
+                            <p class="slds-text-body_small">
+                                <b>Description:</b> {t.description}
+                            </p>
+
+                            <!-- Status pills (mutuamente excluyentes) -->
+                            <template if:true={t.showModified}>
+                                <span class="status-pill status-pill--modified">
+                                    Modified (will update)
+                                </span>
+                            </template>
+
+                            <template if:true={t.showAlreadyCreated}>
+                                <span class="status-pill status-pill--existing">
+                                    Already created (informational)
+                                </span>
+                            </template>
+
+                            <template if:true={t.showReadyToCreate}>
+                                <span class="status-pill status-pill--ok">
+                                    Ready to create
+                                </span>
+                            </template>
+
+                            <template if:true={t.showInvalid}>
+                                <span class="status-pill status-pill--error">
+                                    Subject is required.
+                                </span>
+                            </template>
+                        </template>
+
+                        <template if:true={t.pendingDelete}>
+                            <p class="slds-text-body_small">
+                                This task will be removed from the visit once you apply the changes.
+                            </p>
+                            <span class="status-pill status-pill--delete">
+                                Pending deletion
+                            </span>
+                        </template>
+                    </div>
+                </article>
+            </template>
+        </template>
+
+        <!-- Add task card -->
+        <article
+            class="record-card record-card--add"
+            onclick={handleAddClick}>
+            <div class="record-card__add-inner">
+                <lightning-icon
+                    icon-name="utility:add"
+                    size="small"
+                    class="record-card__add-icon">
+                </lightning-icon>
+                <div class="record-card__add-text">
+                    Add Task
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <template if:false={hasTasks}>
+        <p class="section-empty-hint">
+            No tasks detected to schedule. You can create a new one.
+        </p>
+    </template>
+</template>

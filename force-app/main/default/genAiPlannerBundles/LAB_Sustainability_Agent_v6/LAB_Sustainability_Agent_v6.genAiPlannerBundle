@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>An autonomous sustainability expert that analyzes user inputs to classify activities and evaluate the environmental alignment of projects. It provides detailed, language-consistent answers based on sustainability knowledge, identifying classifications, technical criteria, missing documentation, and applicable sustainability labels with clear, structured, and enriched responses.</description>
+    <localTopicLinks>
+        <genAiPluginName>File_and_Image_Analysis_16jKY000000TV5S</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Sustainability_Questions_16jKY000000TV5S</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>agent_router_16jKY000000TV5S</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>File_and_Image_Analysis_16jKY000000TV5S</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Use this topic when the user uploads a PDF, document, or image file and asks to summarize, analyze, describe, extract text from, or answer questions about its contents.</description>
+        <developerName>File_and_Image_Analysis_16jKY000000TV5S</developerName>
+        <genAiPluginInstructions>
+            <description>You are a sustainability expert agent that classifies activities and evaluates projects’ environmental alignment with detailed, structured, and language-consistent responses.
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH0L</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH0L</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>File_and_Image_Analysis</localDeveloperName>
+        <masterLabel>File and Image Analysis</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>Sustainability_Questions_16jKY000000TV5S</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles inquiries related to sustainability, including practices, policies, and environmental impact. Also answer questions about general concepts like renewable energy, low-emissions energy, energy efficiency, clean transportation, low-carbon buildings, climate change adaptation, sustainability clauses and agricultural practices, concepts about water, sustainable water management and wastewater, soils and natural resource management, waste and pollution, circular economy, gases, meaterial etc...etc...
+Your job is only to provide accurate and relevant information regarding sustainability practices, policies, and environmental considerations. Also answer questions about general concepts like renewable energy, low-emissions energy, energy efficiency, clean transportation, low-carbon buildings, climate change adaptation, sustainability clauses and agricultural practices, concepts about water, sustainable water management and wastewater, soils and natural resource management, waste and pollution, circular economy, gases, meaterial etc...
+Do not address topics outside of sustainability.</description>
+        <developerName>Sustainability_Questions_16jKY000000TV5S</developerName>
+        <genAiPluginInstructions>
+            <description>You are a sustainability expert agent that classifies activities and evaluates projects’ environmental alignment with detailed, structured, and language-consistent responses.
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH0K</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH0K</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Classify_Sustainability_Questions_179KY000000UH0K</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Answer_Sustainability_Questions_179KY000000UH0K</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Classify_Sustainability_Questions_179KY000000UH0K</fullName>
+            <description>Esta acción se utiliza para clasificar la pregunta del agente en la subcategoría de sostenibilidad más específica. Devuelve una o varias categorías posibles cuando existe ambigüedad, separadas por comas, basándose en el análisis semántico y contextual. En el prompt template, se establecen las pautas que debe seguir para hacer esa clasificación.</description>
+            <developerName>Classify_Sustainability_Questions_179KY000000UH0K</developerName>
+            <invocationTarget>LAB_Classify_Sustainability_Questions</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Classify_Sustainability_Questions</localDeveloperName>
+            <masterLabel>Classify Sustainability Questions</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Answer_Sustainability_Questions_179KY000000UH0K</fullName>
+            <description>Esta acción se encarga de analizar actividades de sostenibilidad utilizando información procedente de una base de conocimientos predefinida y de los datos introducidos por el agente. La base de conocimiento (File Sustainability) es un fichero RAG que contiene la información sobre sostenibilidad y donde Agentoforce consultará para obtener la respuesta.</description>
+            <developerName>Answer_Sustainability_Questions_179KY000000UH0K</developerName>
+            <invocationTarget>LAB_Answer_Sustainability_Questions</invocationTarget>
+            <invocationTargetType>generatePromptResponse</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Answer_Sustainability_Questions</localDeveloperName>
+            <masterLabel>Answer Sustainability Questions</masterLabel>
+        </localActions>
+        <localDeveloperName>Sustainability_Questions</localDeveloperName>
+        <masterLabel>Sustainability Questions</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>agent_router_16jKY000000TV5S</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Routes the user&apos;s conversation to the appropriate subagent.</description>
+        <developerName>agent_router_16jKY000000TV5S</developerName>
+        <genAiPluginInstructions>
+            <description>You are a sustainability expert agent that classifies activities and evaluates projects’ environmental alignment with detailed, structured, and language-consistent responses.
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179KY000000UH0J</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179KY000000UH0J</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>agent_router</localDeveloperName>
+        <masterLabel>Agent Router</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>LAB Sustainability Agent</masterLabel>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>

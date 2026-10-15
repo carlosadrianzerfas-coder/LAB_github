@@ -1,0 +1,37 @@
+{
+  "required" : [ "campaignName", "campaignMessages", "briefId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaignName" : {
+      "title" : "Campaign Name",
+      "description" : "Name of the generated Campaign",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "campaignMessages" : {
+      "title" : "Campaign Messages",
+      "description" : "A list of draft messages generated for the campaign.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "briefId" : {
+      "title" : "Brief Record ID",
+      "description" : "The Campaign Brief record ID associated with the draft campaign.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "businessUnitId" : {
+      "title" : "Business Unit Id",
+      "description" : "Business Unit Ids displayed as a list, cannot be an empty string, if there is only one item automatically pass that value and do not present a list. If a business unit has previously been selected use that value and do not display a list unless a user asks to select a business unit",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "businessUnitId",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

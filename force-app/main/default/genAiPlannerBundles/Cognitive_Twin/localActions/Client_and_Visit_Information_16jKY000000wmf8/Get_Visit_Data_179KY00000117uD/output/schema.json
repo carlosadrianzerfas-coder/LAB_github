@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Prompt" : {
+      "title" : "Prompt",
+      "description" : "The necessary data to answer the user question, use this to build an answer. Do never show ids to the user. Build the response with only the data in this response, never show fields with no value, do never invent or fill values. Always show the account name.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

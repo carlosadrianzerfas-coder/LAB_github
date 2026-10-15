@@ -1,0 +1,14 @@
+{
+  "required" : [ "userQuestion" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "userQuestion" : {
+      "title" : "User Question",
+      "description" : "the user utterance with the question or request related to CRM use cases or functionalities",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

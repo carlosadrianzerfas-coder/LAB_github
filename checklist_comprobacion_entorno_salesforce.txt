@@ -1,0 +1,43 @@
+Checklist de comprobaciones tras instalación de entorno Salesforce/Apex
+
+1. Verificar Salesforce CLI:
+   - Ejecutar en terminal: `sf --version`
+   - Debe devolver algo como: `@salesforce/cli/2.x.xx win32-x64 node-vXX.XX.XX`
+   - [si ] ¿Funciona?
+
+2. Verificar Node.js:
+   - Ejecutar: `node -v` y `npm -v`
+   - Deben devolver sus números de versión (sin error)
+   - [ si] ¿Funciona?
+
+3. Verificar Git:
+   - Ejecutar: `git --version`
+   - Debe devolver la versión instalada
+   - [ si] ¿Funciona?
+
+4. Verificar Visual Studio Code:
+   - Ejecutar: `code --version`
+   - Debe mostrar la versión de VS Code instalada
+   - [si ] ¿Funciona?
+
+5. Verificar Salesforce Extension Pack en VS Code:
+   - Abrir VS Code > Extensiones (Ctrl+Shift+X)
+   - Buscar "Salesforce Extension Pack" y comprobar que está instalado
+   - [si ] ¿Está instalado?
+
+6. Verificar Data Loader (si aplica):
+   - Iniciar la aplicación Data Loader manualmente desde menú inicio.
+   - [ si] ¿Abre la utilidad?
+
+7. Verificar Postman (si aplica):
+   - Abrir Postman Desktop y crear una colección/test sencillo
+   - [ si] ¿Abre la app?
+
+8. Probar autorización de Org Salesforce:
+   - Ejecutar: `sf org login web --set-default`
+   - Completar el login en el navegador y verificar que termina sin error
+   - [ ] ¿Autorización completada?
+
+-----
+
+Rellena el checklist marcando cada punto según avance la verificación.

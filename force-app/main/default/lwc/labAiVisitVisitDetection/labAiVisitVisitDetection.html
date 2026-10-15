@@ -1,0 +1,141 @@
+<template>
+    <section class="visit-detection">
+        <div class="visit-detection__header">
+            <div class="visit-detection__title">{headerTitle}</div>
+            <template if:true={showCreateAction}>
+                <div class="visit-detection__actions">
+                    <lightning-button
+                        variant="neutral"
+                        label="Create visit and continue from there"
+                        icon-name="utility:forward"
+                        onclick={handleCreateAndContinue}
+                        disabled={disableCreateAction}>
+                    </lightning-button>
+                </div>
+            </template>
+        </div>
+
+        <template if:true={showSelection}>
+            <div class="visit-detection__selection">
+                <p class="visit-detection__note">{selectionNote}</p>
+
+                <div class="visit-detection__mode-actions">
+                    <lightning-button
+                        variant={newModeVariant}
+                        label="Create a new visit"
+                        onclick={handleSelectNew}>
+                    </lightning-button>
+                    <lightning-button
+                        variant={existingModeVariant}
+                        label="Select an existing visit"
+                        onclick={handleSelectExisting}
+                        disabled={disableOpenExisting}>
+                    </lightning-button>
+                </div>
+
+                <template if:true={showExistingPicker}>
+                    <template if:true={hasOpenVisits}>
+                        <lightning-combobox
+                            class="slds-m-top_small"
+                            label="Existing visits (open)"
+                            options={openVisitOptions}
+                            value={selectedExistingVisitId}
+                            onchange={handleExistingChange}>
+                        </lightning-combobox>
+                    </template>
+
+                    <template if:false={hasOpenVisits}>
+                        <p class="visit-detection__empty slds-m-top_x-small">
+                            No open visits found for this client.
+                        </p>
+                    </template>
+                </template>
+
+                <template if:true={showExistingActions}>
+                    <div class="visit-detection__existing-actions">
+                        <lightning-button
+                            variant="brand"
+                            label="Open visit"
+                            icon-name="utility:open"
+                            onclick={handleOpenVisit}
+                            disabled={disableOpenVisit}>
+                        </lightning-button>
+                        <lightning-button
+                            variant="neutral"
+                            label="Save context and open visit"
+                            icon-name="utility:save"
+                            onclick={handleSaveAndOpen}
+                            disabled={disableOpenVisit}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <p class="visit-detection__hint">{detailsHint}</p>
+
+        <div class="slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-input
+                    label="Visit Name"
+                    value={currentVisitDraft.name}
+                    data-field="name"
+                    required
+                    onchange={handleFieldChange}>
+                </lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_small">
+                <lightning-input
+                    type="datetime-local"
+                    label="Start Date"
+                    value={currentVisitStartInputValue}
+                    data-field="startDatetime"
+                    required
+                    onchange={handleFieldChange}>
+                </lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_small">
+                <lightning-combobox
+                    label="Duration (minutes)"
+                    options={durationOptions}
+                    value={currentVisitDurationValue}
+                    data-field="durationMinutes"
+                    required
+                    onchange={handleFieldChange}>
+                </lightning-combobox>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_small">
+                <lightning-combobox
+                    label="Visit Type"
+                    options={channelOptions}
+                    value={currentVisitDraft.channelCode}
+                    data-field="channelCode"
+                    required
+                    onchange={handleFieldChange}>
+                </lightning-combobox>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_small">
+                <lightning-combobox
+                    label="Visit Purpose"
+                    options={purposeOptions}
+                    value={currentVisitDraft.purposeTypeCode}
+                    data-field="purposeTypeCode"
+                    required
+                    onchange={handleFieldChange}>
+                </lightning-combobox>
+            </div>
+
+        </div>
+
+        <template if:true={showMissingWarning}>
+            <p class="visit-detection__warning">
+                Missing required fields: {currentVisitMissingFieldsLabel}.
+            </p>
+        </template>
+
+    </section>
+</template>

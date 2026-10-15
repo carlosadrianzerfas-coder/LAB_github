@@ -1,0 +1,28 @@
+{
+  "required" : [ "Input:Context" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Context" : {
+      "title" : "Context",
+      "description" : "Usa este listado de establecimientos: Restaurante Atlántico, Bar Manolo, Café Central, Mesón O Porto, Cervecería La Plaza, Taberna do Mar, Restaurante Alameda",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "outputLanguage" : {
+      "title" : "Output language",
+      "description" : "Usa siempre español \"es\"",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "isPreviewOnly" : {
+      "title" : "Preview Only",
+      "description" : "Resolves the prompt template without generating an LLM response.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

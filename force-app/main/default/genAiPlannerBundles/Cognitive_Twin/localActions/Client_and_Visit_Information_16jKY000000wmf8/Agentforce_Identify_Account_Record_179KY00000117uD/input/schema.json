@@ -1,0 +1,27 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "SFObject" : {
+      "title" : "SFObject",
+      "description" : "The Salesforce object type of the record currently displayed on the screen (for example: Account, Visit). This value comes from the UI context and should not be inferred from the user’s question.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "filterText" : {
+      "title" : "filterText",
+      "description" : "The filterText must represent a value that uniquely or meaningfully identifies a specific record of the referenced object (for example, a record name or keyword such as “Iberdrola”, “ACME”, or “Visit Suministros”). Do NOT use: - Field names or attributes the user is asking about (for example: “rorc”, “status”, “amount”). - Generic object names (for example: “account”, “company”, “cuenta”). In phrases of the form “<field> of <object> <value>”, always use <value> as the filterText and never the <field>. If the user mentions both a field/attribute and a potential record identifier, prioritize identifying the record first. The field being requested must not influence record identification. Leave this field empty if: - The user refers to the current record using contextual expressions like “this”, “this company”, “this visit”, or “the current record”. - The user is asking about an attribute of the current record (for example: “name of this company”).\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "The Salesforce record ID of the record currently displayed on the screen. This value is provided by the UI context and identifies the specific record the user is viewing. The Salesforce record ID of the record currently displayed on the screen. This value is provided by the UI context and identifies the specific record the user is viewing.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

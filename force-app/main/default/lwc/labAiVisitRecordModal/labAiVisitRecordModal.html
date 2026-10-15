@@ -1,0 +1,315 @@
+<template>
+    <template if:true={isOpen}>
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            class="slds-modal slds-fade-in-open">
+
+            <div class="slds-modal__container">
+
+                <!-- HEADER -->
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">{modalTitle}</h2>
+                </header>
+
+                <!-- BODY -->
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <!-- ====================================================
+                         MODAL VISIT
+                    ==================================================== -->
+                    <template if:true={isVisit}>
+                        <lightning-input
+                            label="Visit Name"
+                            value={localRecord.name}
+                            data-field="name"
+                            onchange={handleField}>
+                        </lightning-input>
+
+                        <lightning-input
+                            class="slds-m-top_small"
+                            type="datetime-local"
+                            label="Start Date"
+                            required
+                            value={startDatetimeInputValue}
+                            data-field="startDatetime"
+                            onchange={handleField}>
+                        </lightning-input>
+
+                        <lightning-combobox
+                            class="slds-m-top_small"
+                            label="Duration (minutes)"
+                            required
+                            options={durationOptions}
+                            value={durationValue}
+                            data-field="durationMinutes"
+                            onchange={handleField}>
+                        </lightning-combobox>
+
+                        <lightning-combobox
+                            class="slds-m-top_small"
+                            label="Type"
+                            required
+                            options={channelOptions}
+                            value={localRecord.channelCode}
+                            data-field="channelCode"
+                            onchange={handleField}>
+                        </lightning-combobox>
+
+                        <lightning-combobox
+                            class="slds-m-top_small"
+                            label="Purpose Type"
+                            required
+                            options={purposeOptions}
+                            value={localRecord.purposeTypeCode}
+                            data-field="purposeTypeCode"
+                            onchange={handleField}>
+                        </lightning-combobox>
+
+                        <lightning-textarea
+                            class="slds-m-top_small"
+                            label="Description"
+                            value={localRecord.comments}
+                            data-field="comments"
+                            onchange={handleField}>
+                        </lightning-textarea>
+                    </template>
+
+                    <!-- ====================================================
+                         MODAL CLIENT PARTICIPANT
+                    ==================================================== -->
+                    <template if:true={isClient}>
+
+                        <!-- VISIT (READ ONLY) -->
+                        <lightning-input
+                            label="Visit"
+                            value={localRecord.visitName}
+                            disabled>
+                        </lightning-input>
+
+                        <!-- MODE SELECTOR -->
+                        <lightning-radio-group
+                            name="cpMode"
+                            label="Link Type"
+                            options={clientParticipantModeOptions}
+                            value={localRecord.clientMode}
+                            type="button"
+                            onchange={handleModeChange}>
+                        </lightning-radio-group>
+
+                        <!-- ==========================
+                             EXISTING CONTACT
+                        =========================== -->
+                        <template if:true={isClientModeExisting}>
+
+                            <lightning-record-picker
+                                label="Contact"
+                                placeholder="Search client contact..."
+                                object-api-name="Contact"
+                                value={localRecord.contactId}
+                                required
+                                filter={contactFilter}
+                                onchange={handleContactChange}>
+                            </lightning-record-picker>
+
+                            <div class="slds-grid slds-wrap slds-gutters slds-m-top_small">
+                                <div class="slds-col slds-size_1-of-1">
+                                    <lightning-input
+                                        label="Title/Role"
+                                        value={localRecord.role}
+                                        disabled>
+                                    </lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input
+                                        label="Phone"
+                                        value={localRecord.contactPhone}
+                                        disabled>
+                                    </lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input
+                                        label="Email"
+                                        value={localRecord.contactEmail}
+                                        disabled>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- ==========================
+                             NEW CONTACT
+                        =========================== -->
+                        <template if:true={isClientModeNew}>
+                            <div class="subcard slds-m-top_small">
+
+                                <div class="subcard__header">
+                                    <lightning-icon
+                                        icon-name="standard:contact"
+                                        size="x-small">
+                                    </lightning-icon>
+                                    <span class="subcard__title">New Client Contact</span>
+                                </div>
+
+                                <div class="subcard__body">
+
+                                    <lightning-input
+                                        label="Client Name"
+                                        value={localRecord.accountName}
+                                        disabled>
+                                    </lightning-input>
+
+                                    <div class="slds-grid slds-gutters slds-m-top_small">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                label="First Name"
+                                                value={localRecord.newContactFirstName}
+                                                data-field="newContactFirstName"
+                                                onchange={handleField}>
+                                            </lightning-input>
+                                        </div>
+
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                label="Last Name"
+                                                value={localRecord.newContactLastName}
+                                                required
+                                                data-field="newContactLastName"
+                                                onchange={handleField}>
+                                            </lightning-input>
+                                        </div>
+                                    </div>
+
+                                    <lightning-input
+                                        class="slds-m-top_small"
+                                        type="email"
+                                        label="Email"
+                                        value={localRecord.newContactEmail}
+                                        data-field="newContactEmail"
+                                        onchange={handleField}>
+                                    </lightning-input>
+
+                                    <lightning-input
+                                        class="slds-m-top_small"
+                                        type="tel"
+                                        label="Phone"
+                                        value={localRecord.newContactPhone}
+                                        data-field="newContactPhone"
+                                        onchange={handleField}>
+                                    </lightning-input>
+
+                                    <lightning-combobox
+                                        class="slds-m-top_small"
+                                        label="Title/Role"
+                                        value={localRecord.newContactTitleRole}
+                                        options={contactTitleOptions}
+                                        data-field="newContactTitleRole"
+                                        onchange={handleField}>
+                                    </lightning-combobox>
+
+                                    <lightning-input
+                                        class="slds-m-top_small"
+                                        label="Record Type"
+                                        value={localRecord.contactRecordTypeName}
+                                        disabled>
+                                    </lightning-input>
+
+                                </div>
+                            </div>
+                        </template>
+
+                    </template>
+
+                    <!-- ====================================================
+                         MODAL TASK
+                    ==================================================== -->
+                    <template if:true={isTask}>
+                        <lightning-input
+                            label="Subject"
+                            value={localRecord.subject}
+                            data-field="subject"
+                            onchange={handleField}>
+                        </lightning-input>
+
+                        <lightning-input
+                            class="slds-m-top_small"
+                            type="date"
+                            label="Due Date"
+                            value={localRecord.dueDate}
+                            data-field="dueDate"
+                            onchange={handleField}>
+                        </lightning-input>
+
+                        <lightning-textarea
+                            class="slds-m-top_small"
+                            label="Description"
+                            value={localRecord.description}
+                            data-field="description"
+                            onchange={handleField}>
+                        </lightning-textarea>
+                    </template>
+
+                    <!-- ====================================================
+                         MODAL INTERNAL USER
+                    ==================================================== -->
+                    <template if:true={isInternal}>
+                        <div class="slds-grid slds-gutters slds-m-bottom_small">
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning-input
+                                    label="Visit"
+                                    value={localRecord.visitName}
+                                    disabled>
+                                </lightning-input>
+                            </div>
+                        </div>
+
+                        <lightning-record-picker
+                            label="DWP User"
+                            placeholder="Search user..."
+                            object-api-name="User"
+                            value={localRecord.userId}
+                            required
+                            onchange={handleUserChange}>
+                        </lightning-record-picker>
+
+                        <div class="slds-grid slds-gutters slds-m-top_small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input
+                                    label="Email"
+                                    value={localRecord.userEmail}
+                                    disabled>
+                                </lightning-input>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input
+                                    label="Phone"
+                                    value={localRecord.userPhone}
+                                    disabled>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+
+                <!-- FOOTER -->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                    <lightning-button
+                        class="slds-m-left_small"
+                        variant="brand"
+                        label="Save"
+                        onclick={handleSave}>
+                    </lightning-button>
+                </footer>
+
+            </div>
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

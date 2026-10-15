@@ -1,0 +1,31 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaignName" : {
+      "title" : "Campaign Name",
+      "description" : "Name of the generated Campaign",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefId" : {
+      "title" : "Brief Record ID",
+      "description" : "The Campaign Brief record ID associated with the draft campaign.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "campaignMessages" : {
+      "title" : "Campaign Messages",
+      "description" : "A list of draft messages generated for the campaign.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

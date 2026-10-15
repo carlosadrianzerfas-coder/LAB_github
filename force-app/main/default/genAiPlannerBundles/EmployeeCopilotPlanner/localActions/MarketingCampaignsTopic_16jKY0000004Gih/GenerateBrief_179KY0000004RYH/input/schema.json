@@ -1,0 +1,16 @@
+{
+  "required" : [ "campaignObjective" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaignObjective" : {
+      "title" : "Campaign Objective",
+      "description" : "AI uses the campaign brief to create your campaign, including the subject line, preheader, and message content. Provide as much detail about your campaign objectives as you can for the best result.",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignObjective",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

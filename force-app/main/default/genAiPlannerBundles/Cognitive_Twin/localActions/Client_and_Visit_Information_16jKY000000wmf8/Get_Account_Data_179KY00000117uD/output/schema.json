@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Prompt" : {
+      "title" : "Prompt",
+      "description" : "The necessary data to answer the user question, use this to build an answer. Do never show ids to the user. Build the response with only the data in this response, never show fields with no value, do never invent or fill values. Fields meaning: LAB_RORC__c: Representa el Return on Regulated Capital (RORC), mide la rentabilidad del capital regulatorio gestionable por el grupo y unidades de negocio. La rentabilidad se mide frente al capital que deberíamos tener para alcanzar nuestra meta de ratio de capital,y no sobre el capital real. LAB_EVA__c: Representa el Economic Value Added (EVA), métrica económica de rentabilidad ajustada al riesgo para este grupo empresaria y que mide la creación de valor para los accionistas, utilizada en el ámbito de CIB. LAB_GROSS_MARGIN__c: Margen bruto en el año actual para este grupo empresarial LAB_Rating_Int__c Indicador interno de riesgo asociado al grupo empresarial (Internal Rating) LAB_first_income_country_amount__c: Top Revenues Geography 1. País que concentra el mayor volumen de ingresos (revenues) asociados al cliente dentro del período de análisis. Representa la geografía principal de generación de ingresos para el cliente, considerando todos los productos incluidos en el modelo. LAB_first_income_country_name__c: Geography top 1. Monto total de ingresos (revenues) generados en el país identificado como Geography top 1 para el cliente, durante el período de análisis. LAB_second_income_cntry_amount__c: Top Revenues Geography 2. País que concentra el segundo mayor volumen de ingresos (revenues) asociados al cliente dentro del período de análisis. Representa la segunda geografía más relevante en términos de generación de ingresos para el cliente. LAB_second_income_country_name__c: Geography top 2. Monto total de ingresos (revenues) generados en el país identificado como el segundo con mayor volumen de ingresos Geography top 2 para el cliente, durante el período de análisis. LAB_third_income_country_amount__c: Top Revenues Geography 3. País que concentra el tercer mayor volumen de ingresos (revenues) asociados al cliente dentro del período de análisis. Representa una geografía relevante adicional en la distribución de ingresos del cliente. LAB_third_income_country_name__c: Geography top 3. Monto total de ingresos (revenues) generados en el país identificado como el tercer con mayor volumen de ingresos Geography top 3 para el cliente, durante el período de análisis. LAB_Global_banker__c: Banquero global asociado a esta cuenta, empresa, grupo, subsidiaria.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

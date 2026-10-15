@@ -1,0 +1,24 @@
+{
+  "required" : [ "campaignObjective" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaignObjective" : {
+      "title" : "Campaign Objective",
+      "description" : "Campaign objective from user",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignObjective",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "file" : {
+      "title" : "File",
+      "description" : "ContentDocument id representing a file to use",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "The file to use for generating the brief.",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

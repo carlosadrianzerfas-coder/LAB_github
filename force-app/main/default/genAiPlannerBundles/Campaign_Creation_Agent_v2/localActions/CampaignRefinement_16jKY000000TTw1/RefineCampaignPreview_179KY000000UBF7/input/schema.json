@@ -1,0 +1,24 @@
+{
+  "required" : [ "briefId", "inputRefinement" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "briefId" : {
+      "title" : "Brief ID",
+      "description" : "Brief record ID",
+      "lightning:type" : "lightning__recordIdType",
+      "einstein:description" : "briefId",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "inputRefinement" : {
+      "title" : "Refinement",
+      "description" : "Refinement request",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "inputRefinement",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

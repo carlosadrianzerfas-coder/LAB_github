@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create a Revenue Cloud quote for an initial business from an opportunity. The agent takes in an Opportunity ID as a required input and returns a Quote ID. Optional inputs include the Quote Name and the Pricebook Name. This action is to quote new business, in contrast to an amendment quote or a renewal quote, which is changing or extending existing business. A sales rep may want to create multiple quotes for an opportunity.</description>
+    <developerName>Create_an_Initial_Quote_on_an_Opportunity</developerName>
+    <invocationTarget>Create_an_Initial_Quote_on_an_Opportunity</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Create_an_Initial_Quote_on_an_Opportunity</localDeveloperName>
+    <masterLabel>Create an Initial Quote on an Opportunity</masterLabel>
+    <progressIndicatorMessage>Default</progressIndicatorMessage>
+</GenAiFunction>

@@ -1,0 +1,123 @@
+<template>
+    <!-- ===================== NEW VISIT ===================== -->
+    <div class="section-header slds-m-top_large">
+        <div class="section-title">New Visit to Schedule</div>
+        <div class="section-actions">
+            <lightning-button
+                variant="neutral"
+                label="Apply New Visits in Salesforce"
+                icon-name="utility:save"
+                class="section-action-button"
+                onclick={handleApplyClick}>
+            </lightning-button>
+        </div>
+    </div>
+
+    <div class="record-grid">
+
+        <!-- Existing cards -->
+        <template if:true={hasVisits}>
+            <template for:each={displayVisits} for:item="v">
+                <article key={v.id} class={v.cardClass}>
+                    <div class="record-card__header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <lightning-icon
+                                    icon-name="standard:event"
+                                    size="small">
+                                </lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h3 class="record-card__header-title">
+                                    {v.name}
+                                </h3>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    New scheduled visit
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="record-card__actions">
+                            <lightning-button-icon
+                                icon-name="utility:edit"
+                                alternative-text="Edit"
+                                variant="border-filled"
+                                data-id={v.id}
+                                onclick={handleEditClick}>
+                            </lightning-button-icon>
+
+                            <lightning-button-icon
+                                icon-name="utility:delete"
+                                alternative-text="Delete"
+                                variant="border-filled"
+                                data-id={v.id}
+                                onclick={handleDeleteClick}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+
+                    <div class="record-card__body">
+                        <p class="slds-text-body_small">
+                            <b>Start Date:</b> {v.startDatetime}
+                        </p>
+                        <p class="slds-text-body_small">
+                            <b>Duration (min):</b> {v.durationMinutes}
+                        </p>
+                        <p class="slds-text-body_small">
+                            <b>Type:</b> {v.displayChannel}
+                        </p>
+                        <p class="slds-text-body_small">
+                            <b>Purpose Type:</b> {v.displayPurpose}
+                        </p>
+
+                        <template if:true={v.showModifiedPill}>
+                            <span class="status-pill status-pill--modified">
+                                Modified (will update)
+                            </span>
+                            </template>
+                        <template if:true={v.showExistingPill}>
+                            <span class="status-pill status-pill--existing">
+                                Already created (informational)
+                            </span>
+                        </template>
+
+                        <template if:true={v.isValid}>
+                            <span class="status-pill status-pill--ok">
+                                Ready to create
+                            </span>
+                        </template>
+
+                        <template if:false={v.isValid}>
+                            <span class="status-pill status-pill--error">
+                                Review name, start date and purpose type.
+                            </span>
+                        </template>
+                    </div>
+                </article>
+            </template>
+        </template>
+
+        <!-- Add visit card -->
+        <article
+            class="record-card record-card--add"
+            onclick={handleAddClick}>
+            <div class="record-card__add-inner">
+                <lightning-icon
+                    icon-name="utility:add"
+                    size="small"
+                    class="record-card__add-icon">
+                </lightning-icon>
+                <div class="record-card__add-text">
+                    Add Visit to Schedule
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <template if:false={hasVisits}>
+        <p class="section-empty-hint">
+            No scheduled visit has been proposed. You can create a new one.
+        </p>
+    </template>
+</template>

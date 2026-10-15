@@ -1,0 +1,247 @@
+<template>
+    <!-- ===================== CLIENT PARTICIPANTS ===================== -->
+    <div class="section-header slds-m-top_large">
+        <div class="section-title">Client Participants</div>
+        <div class="section-actions">
+            <lightning-button
+                variant="neutral"
+                label="Apply Client Participants in Salesforce"
+                icon-name="utility:save"
+                class="section-action-button"
+                onclick={handleApplyClick}>
+            </lightning-button>
+        </div>
+    </div>
+
+    <div class="record-grid">
+        <!-- Existing / proposed cards -->
+        <template if:true={hasAnyClientParticipants}>
+            <template for:each={participants} for:item="cp">
+                <article key={cp.id} class={cp.cardClass}>
+                    <div class="record-card__header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <lightning-icon
+                                    icon-name="standard:contact"
+                                    size="small">
+                                </lightning-icon>
+                            </div>
+                        <div class="slds-media__body">
+                            <h3 class="slds-card__header-title">
+                                {cp.fullName}
+                            </h3>
+                            <p class="slds-text-body_small slds-text-color_weak">
+                                {cp.role}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="record-card__actions">
+                        <template if:true={cp.pendingDelete}>
+                            <lightning-button-icon
+                                icon-name="utility:undo"
+                                alternative-text="Undo delete"
+                                variant="border-filled"
+                                data-id={cp.id}
+                                onclick={handleRestoreClick}>
+                            </lightning-button-icon>
+                        </template>
+                        <template if:false={cp.pendingDelete}>
+                            <lightning-button-icon
+                                icon-name="utility:edit"
+                                alternative-text="Edit"
+                                variant="border-filled"
+                                data-id={cp.id}
+                                onclick={handleEditClick}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:delete"
+                                alternative-text="Delete"
+                                variant="border-filled"
+                                data-id={cp.id}
+                                onclick={handleDeleteClick}>
+                            </lightning-button-icon>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="record-card__body">
+                    <template if:false={cp.pendingDelete}>
+                        <!-- Contact details: standardized subcards -->
+                        <template if:true={cp.showExistingCard}>
+                            <div class="subcard subcard--existing-contact slds-m-top_small">
+                                <div class="subcard__header">
+                                    <lightning-icon
+                                        icon-name="standard:contact_list"
+                                        size="x-small">
+                                    </lightning-icon>
+                                    <span class="subcard__title">
+                                        Existing Contact in this Visit
+                                    </span>
+                                </div>
+                                <div class="subcard__body">
+                                    <p class="slds-text-body_small">
+                                        <b>First Name:</b> {cp.contactFirstName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Last Name:</b> {cp.contactLastName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Email:</b> {cp.contactEmail}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Phone:</b> {cp.contactPhone}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Title/Role:</b> {cp.role}
+                                    </p>
+                                </div>
+                            </div>
+                            <template if:false={cp.isModified}>
+                                <span class="status-pill status-pill--existing slds-m-top_x-small">
+                                    Already exists in the visit (informational)
+                                </span>
+                            </template>
+                        </template>
+
+                        <template if:true={cp.hasMatchedContact}>
+                            <div class="subcard subcard--existing-contact slds-m-top_small">
+                                <div class="subcard__header">
+                                    <lightning-icon
+                                        icon-name="standard:contact_list"
+                                        size="x-small">
+                                    </lightning-icon>
+                                    <span class="subcard__title">
+                                        Existing Client Contact
+                                    </span>
+                                </div>
+                                <div class="subcard__body">
+                                    <p class="slds-text-body_small">
+                                        <b>First Name:</b> {cp.contactFirstName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Last Name:</b> {cp.contactLastName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Email:</b> {cp.contactEmail}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Phone:</b> {cp.contactPhone}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Title/Role:</b> {cp.role}
+                                    </p>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- If matched to an existing Salesforce Contact -->
+                        <template if:true={cp.hasMatchedContact}>
+                            <span class="status-pill status-pill--ok slds-m-top_x-small">
+                                Linked to an existing client contact
+                            </span>
+                        </template>
+
+                        <!-- If a new Salesforce Contact will be created -->
+                        <template if:true={cp.showNewContactCard}>
+                            <div class="subcard subcard--new-contact slds-m-top_small">
+                                <div class="subcard__header">
+                                    <lightning-icon
+                                        icon-name="standard:contact_list"
+                                        size="x-small">
+                                    </lightning-icon>
+                                    <span class="subcard__title">
+                                        New Contact to Create
+                                    </span>
+                                </div>
+                                <div class="subcard__body">
+                                    <p class="slds-text-body_small">
+                                        <b>Client Name:</b> {accountName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>First Name:</b> {cp.newContactFirstName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Last Name:</b> {cp.newContactLastName}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Email:</b> {cp.newContactEmail}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Phone:</b> {cp.newContactPhone}
+                                    </p>
+                                    <p class="slds-text-body_small">
+                                        <b>Title/Role:</b> {cp.newContactTitleRole}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <span class="status-pill status-pill--ok slds-m-top_x-small">
+                                A new client contact will be created
+                            </span>
+                        </template>
+
+                        <!-- Validation state -->
+                        <template if:true={cp.showModified}>
+                            <span class="status-pill status-pill--modified slds-m-top_x-small">
+                                Modified (will update)
+                            </span>
+                        </template>
+                        <template if:false={cp.showModified}>
+                            <template if:true={cp.isExisting}>
+                                <template if:false={cp.isValid}>
+                                    <span class="status-pill status-pill--error slds-m-top_x-small">
+                                        Contact is required.
+                                    </span>
+                                </template>
+                            </template>
+                            <template if:false={cp.isExisting}>
+                                <template if:true={cp.isValid}>
+                                    <span class="status-pill status-pill--ok slds-m-top_x-small">
+                                        Ready to process
+                                    </span>
+                                </template>
+                                <template if:false={cp.isValid}>
+                                    <span class="status-pill status-pill--error slds-m-top_x-small">
+                                        Contact is required.
+                                    </span>
+                                </template>
+                            </template>
+                        </template>
+                    </template>
+
+                    <template if:true={cp.pendingDelete}>
+                        <p class="slds-text-body_small">
+                            This client participant will be removed from the visit when you apply the changes.
+                        </p>
+                        <span class="status-pill status-pill--delete slds-m-top_x-small">
+                            Pending deletion
+                        </span>
+                    </template>
+                </div>
+            </article>
+        </template>
+        </template>
+
+        <!-- Add client participant card -->
+        <article
+            class="record-card record-card--add"
+            onclick={handleAddClick}>
+            <div class="record-card__add-inner">
+                <lightning-icon
+                    icon-name="utility:adduser"
+                    size="small"
+                    class="record-card__add-icon">
+                </lightning-icon>
+                <div class="record-card__add-text">
+                    Add Client Participant
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <template if:false={hasAnyClientParticipants}>
+        <p class="section-empty-hint">
+            No client participants detected. You can add them manually.
+        </p>
+    </template>
+</template>

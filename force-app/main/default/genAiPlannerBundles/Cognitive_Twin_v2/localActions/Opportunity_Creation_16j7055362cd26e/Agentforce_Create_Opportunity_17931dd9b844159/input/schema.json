@@ -1,0 +1,21 @@
+{
+  "required" : [ "accountId", "createOpportunityRequestData" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "accountId",
+      "description" : "The accountId of the opportunity, the previous identified account id.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "createOpportunityRequestData" : {
+      "title" : "createOpportunityRequestData",
+      "description" : "The necessary data to create an opportunity, display the component and let the user fill it.\n",
+      "lightning:type" : "c__CreateOpportunityRequest",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

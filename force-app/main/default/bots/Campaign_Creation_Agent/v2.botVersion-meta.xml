@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BotVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>v2</fullName>
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <botDialogs>
+        <botSteps>
+            <botMessages>
+                <message>Hi, I’m your campaign creation agent. I can plan and create multi-channel marketing campaigns for you. Be sure to check my work for accuracy. Tell me a few details about your campaign objectives, and let’s get started!</message>
+                <messageIdentifier>6d97ad91-895e-490b-90d8-291103fed3ca</messageIdentifier>
+            </botMessages>
+            <stepIdentifier>d55d6e65-cce4-4176-9099-bf71967d52eb</stepIdentifier>
+            <type>Message</type>
+        </botSteps>
+        <botSteps>
+            <stepIdentifier>75111137-0c48-4b28-bf79-5154c4e8c342</stepIdentifier>
+            <type>Wait</type>
+        </botSteps>
+        <developerName>Welcome</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
+        <label>Welcome</label>
+        <showInFooterMenu>false</showInFooterMenu>
+    </botDialogs>
+    <botDialogs>
+        <botSteps>
+            <botMessages>
+                <message>Something went wrong. Try again.</message>
+                <messageIdentifier>6bbfeec3-d6d1-43bf-af3e-7794d2c3878d</messageIdentifier>
+            </botMessages>
+            <stepIdentifier>bf9bf498-e98f-4c96-b417-29b2088bf1e8</stepIdentifier>
+            <type>Message</type>
+        </botSteps>
+        <botSteps>
+            <stepIdentifier>74dfc84d-90f7-4622-b663-bd2504ec37dd</stepIdentifier>
+            <type>Wait</type>
+        </botSteps>
+        <developerName>Rich_Content_Error_Handling</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
+        <label>Error Handler</label>
+        <showInFooterMenu>false</showInFooterMenu>
+    </botDialogs>
+    <botDialogs>
+        <developerName>Transfer_To_Agent</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
+        <label>Transfer To Agent</label>
+        <showInFooterMenu>false</showInFooterMenu>
+    </botDialogs>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationDefinitionPlanners>
+        <genAiPlannerName>Campaign_Creation_Agent_v2</genAiPlannerName>
+    </conversationDefinitionPlanners>
+    <conversationSystemDialogs>
+        <dialog>Rich_Content_Error_Handling</dialog>
+        <type>ErrorHandling</type>
+    </conversationSystemDialogs>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Runtime condition evaluation for if statements</description>
+        <developerName>AgentScriptInternal_condition</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Runtime Condition</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Object</dataType>
+        <description>Holds the current brief query results</description>
+        <developerName>brief_query_results</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Brief Query Results</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Holds the current brief record details</description>
+        <developerName>brief_snapshot</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Brief Snapshot</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Object</dataType>
+        <description>Available business units fetched once</description>
+        <developerName>businessUnitsAvailable</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Business Units Available</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Stores whether the Brief should be created as a conversational campaign</description>
+        <developerName>conversational_preference</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Conversational Preference</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Object</dataType>
+        <description>Holds the current brief record</description>
+        <developerName>current_brief_id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Current Brief Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Error message</description>
+        <developerName>error_message</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Error Message</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>ContentDocument name or query the user might have mentioned during Brief generation</description>
+        <developerName>file_input</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>File Input</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <collectionType>List</collectionType>
+        <dataType>Object</dataType>
+        <description>File Query Results</description>
+        <developerName>file_query_results</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>File Query Results</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>True if the user indicates they want to change the Brief to be conversational. False if the user indicates they want to change the Brief to no longer be conversational. None if the user has not indicated they want to change the Brief&apos;s conversational para</description>
+        <developerName>is_conversational_update</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Is Conversational Update</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The resolved business unit ID for this session</description>
+        <developerName>selectedBusinessUnitId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Selected Business Unit Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>If a user mentions a file, query for it and save the ContentDocument record Id in this variable</description>
+        <developerName>selectedFileId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Selected File Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <defaultStdObjForContactIdFltrEnabled>false</defaultStdObjForContactIdFltrEnabled>
+    <entryDialog>Welcome</entryDialog>
+    <intentDisambiguationEnabled>false</intentDisambiguationEnabled>
+    <intentV3Enabled>false</intentV3Enabled>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <stopRecPrompts>false</stopRecPrompts>
+    <stopWelcomePrompts>false</stopWelcomePrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+</BotVersion>

@@ -1,0 +1,20 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "quoteId" : {
+      "title" : "quoteId",
+      "description" : "18 character Id of the quote record.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "quoteLineItemId" : {
+      "title" : "quoteLineItemId",
+      "description" : "18 character Id of the QuoteLineItem record on which this action acts. This is not the Product2 Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

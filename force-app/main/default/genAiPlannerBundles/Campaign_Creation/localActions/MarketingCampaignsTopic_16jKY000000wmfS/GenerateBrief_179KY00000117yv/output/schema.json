@@ -1,0 +1,39 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "briefName" : {
+      "title" : "campaignBriefName",
+      "description" : "A draft of the campaign brief name based on the user-provided campaign details.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefDescription" : {
+      "title" : "campaignBriefDescription",
+      "description" : "A draft of the campaign brief description based on the user-provided campaign details.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefKeyMessage" : {
+      "title" : "campaignBriefKeyMessage",
+      "description" : "A draft of the campaign brief key message based on the user-provided campaign details.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "briefTargetAudience" : {
+      "title" : "campaignBriefTargetAudience",
+      "description" : "A draft of the campaign brief target audience based on the user-provided campaign details.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

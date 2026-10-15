@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Retrieves specific fields for an Account and returns them as a JSON string.</description>
+    <developerName>Get_Account_Data</developerName>
+    <invocationTarget>AgentorceGetAccountData</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>Get_Account_Data</localDeveloperName>
+    <masterLabel>Get Account Data</masterLabel>
+</GenAiFunction>

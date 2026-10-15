@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "displayInfo" : {
+      "title" : "Display Use Case Data",
+      "description" : "Output response formated with relevant use cases for the user. Do not summarize, transform, or restate the tool results. Pass them through unchanged for UI rendering via the custom Lightning type.",
+      "lightning:type" : "c__Display_CRM_Use_Cases",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

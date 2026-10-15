@@ -1,0 +1,16 @@
+{
+  "required" : [ "briefRecordId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "briefRecordId" : {
+      "title" : "Brief ID",
+      "description" : "Brief record ID",
+      "lightning:type" : "lightning__recordIdType",
+      "einstein:description" : "briefRecordID",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

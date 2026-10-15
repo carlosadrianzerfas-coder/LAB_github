@@ -1,0 +1,21 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "dataExtWriteStatus" : {
+      "title" : "Data Extension Write Status",
+      "description" : "Indicates whether the row was added to the data extension.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    },
+    "generatedContent" : {
+      "title" : "Generated Content",
+      "description" : "The Apex object for generated content for the journey.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

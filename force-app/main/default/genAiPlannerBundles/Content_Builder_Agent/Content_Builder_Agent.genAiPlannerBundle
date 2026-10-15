@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Interacts with the user to draft or revise content for Marketing Cloud from Salesforce CMS in the content builder.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jKY0000004K5Y</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>ContentCreation_16jKY0000004K5Y</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>ContentCreation_16jKY0000004K5Y</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Interacts with the user to draft or revise content from Salesforce CMS in the content builder.</description>
+        <developerName>ContentCreation_16jKY0000004K5Y</developerName>
+        <genAiPluginInstructions>
+            <description>Never use this topic to draft or refine Sales emails.</description>
+            <developerName>neversalesemail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>never-sales-email</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a specific property or element for generation cannot be identified, encourage the user to make a more explicit request.</description>
+            <developerName>unknownpropertyhandling</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>unknown-property-handling</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user asks for a refinement, use the conversation history to identify the previous user request that the refinement pertains to, and include that request in the &apos;userInput&apos; input variable if applicable.</description>
+            <developerName>useuserresponse</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>use-user-response</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If a user uses &quot;this&quot; in a request (for example, &quot;Draft a different version of this paragraph,&quot; or &quot;Revise the text in this section&quot;) the user likely intends to modify the text in the currently selected component or the most recently generated section. Do not ask the user to provide a value.</description>
+            <developerName>handlecontextualthis</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>handle-contextual-this</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>CreateOrRefineSectionWithContent_179KY0000004zPD</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>DraftOrRefineTextForProperty_179KY0000004zPD</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>CreateOrRefineSection_179KY0000004zPD</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>CreateOrRefineSection_179KY0000004zPD</fullName>
+            <description>Handles requests for the generation and refinement of a section and components within the section in the application where users create emails, landing pages, and other types of content. These requests can include a specified number of columns in the section, and specified components to be included in the section, such as heading, paragraph, image or button components. This action should not be used when text generation is requested as part of user request. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object.</description>
+            <developerName>CreateOrRefineSection_179KY0000004zPD</developerName>
+            <invocationTarget>createOrRefineSectionWithContent</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateOrRefineSection</localDeveloperName>
+            <masterLabel>Marketing Cloud: Create Section</masterLabel>
+            <progressIndicatorMessage>Drafting your content</progressIndicatorMessage>
+            <source>sfdc_cms__CreateOrRefineSection</source>
+        </localActions>
+        <localActions>
+            <fullName>CreateOrRefineSectionWithContent_179KY0000004zPD</fullName>
+            <description>Handles requests for generation and refinement of components with text and blocks with text in the application where users create emails, landing pages, and other types of content. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object</description>
+            <developerName>CreateOrRefineSectionWithContent_179KY0000004zPD</developerName>
+            <invocationTarget>createOrRefineSectionWithContent</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateOrRefineSectionWithContent</localDeveloperName>
+            <masterLabel>Marketing Cloud: Create Section with Content</masterLabel>
+            <progressIndicatorMessage>Creating your section</progressIndicatorMessage>
+            <source>sfdc_cms__CreateOrRefineSectionWithContent</source>
+        </localActions>
+        <localActions>
+            <fullName>DraftOrRefineTextForProperty_179KY0000004zPD</fullName>
+            <description>Handles requests for text generation and refinement in the application where users create emails, SMS messages, and other types of content. No other action, such as IdentifyObjectByName, should precede this action. This action returns a JSON Patch object</description>
+            <developerName>DraftOrRefineTextForProperty_179KY0000004zPD</developerName>
+            <invocationTarget>generateOrRefineTextForProperty</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>DraftOrRefineTextForProperty</localDeveloperName>
+            <masterLabel>Marketing Cloud: Draft Content</masterLabel>
+            <progressIndicatorMessage>Drafting your content</progressIndicatorMessage>
+            <source>sfdc_cms__DraftOrRefineTextForProperty</source>
+        </localActions>
+        <localDeveloperName>ContentCreation</localDeveloperName>
+        <masterLabel>Content Creation</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to handle requests to generate new or refine existing pieces of content in the content builder. This could be tasks such as drafting subject lines or preheaders, optimizing SMS messages, generating headings, paragraphs, and button text, and creating blocks or components with or without corresponding text for emails or landing pages.</scope>
+        <source>sfdc_cms__ContentCreation</source>
+    </localTopics>
+    <masterLabel>Content Builder Agent</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jKY0000004K5Y</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jKY0000004K5Y</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlannerBundle>

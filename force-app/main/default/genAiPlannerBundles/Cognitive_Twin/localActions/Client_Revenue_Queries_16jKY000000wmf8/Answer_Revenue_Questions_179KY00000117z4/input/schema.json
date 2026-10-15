@@ -1,0 +1,21 @@
+{
+  "required" : [ "accountId", "question" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "accountId",
+      "description" : "The unique Salesforce Account ID that identifies the client. This parameter is used to retrieve the client’s data and ensure the response is generated for the correct account.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "question" : {
+      "title" : "question",
+      "description" : "The user question",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

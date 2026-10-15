@@ -1,0 +1,121 @@
+<template>
+    <div class="email-recipient__row slds-form-element">
+        <label class="email-recipient__label slds-form-element__label" for="recipientSearch">To</label>
+        <div class="slds-form-element__control email-recipient__control">
+            <div class="email-recipient__search">
+                <lightning-input
+                    id="recipientSearch"
+                    type="text"
+                    label="To"
+                    variant="label-hidden"
+                    value={searchTerm}
+                    placeholder="Search contacts, leads, users, or type an email"
+                    disabled={disabled}
+                    oninput={handleSearchInput}
+                    onchange={handleSearchInput}
+                    onkeydown={handleSearchKeydown}
+                    onkeyup={handleSearchKeyup}
+                    onfocus={handleSearchFocus}>
+                </lightning-input>
+
+                <template if:true={showRecipientSearchDropdown}>
+                    <div class="email-recipient__dropdown slds-dropdown slds-dropdown_fluid" style={dropdownStyle}>
+                        <ul class="email-recipient__list slds-dropdown__list" role="listbox">
+                            <template if:true={searchLoading}>
+                                <li role="presentation" class="email-recipient__list-item slds-dropdown__item">
+                                    <div class="email-recipient__option email-recipient__option--status">
+                                        <lightning-spinner size="small" alternative-text="Searching"></lightning-spinner>
+                                        <span class="slds-m-left_small slds-text-body_small">Searching...</span>
+                                    </div>
+                                </li>
+                            </template>
+
+                            <template for:each={searchResults} for:item="result">
+                                <li key={result.key} role="presentation" class="email-recipient__list-item slds-dropdown__item">
+                                    <button
+                                        type="button"
+                                        class="email-recipient__option slds-button slds-button_reset"
+                                        role="option"
+                                        data-id={result.id}
+                                        data-type={result.type}
+                                        data-name={result.name}
+                                        data-display-name={result.displayName}
+                                        data-email={result.email}
+                                        onclick={handleSearchSelect}>
+                                        <span class="slds-media slds-media_center">
+                                            <span class="slds-media__figure">
+                                                <lightning-icon icon-name={result.iconName} size="small"></lightning-icon>
+                                            </span>
+                                            <span class="slds-media__body">
+                                                <span class="slds-truncate email-recipient__option-name" title={result.displayName}>{result.displayName}</span>
+                                                <span class="slds-truncate email-recipient__option-email" title={result.displayDetail}>{result.displayDetail}</span>
+                                            </span>
+                                            <span class="slds-media__figure slds-media__figure_reverse">
+                                                <span class="email-recipient__option-type slds-text-body_small slds-text-color_weak">{result.typeLabel}</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </li>
+                            </template>
+
+                            <template if:true={showManualRecipientOption}>
+                                <li role="presentation" class="email-recipient__list-item slds-dropdown__item">
+                                    <button
+                                        type="button"
+                                        class="email-recipient__option slds-button slds-button_reset"
+                                        role="option"
+                                        onclick={handleManualAddClick}>
+                                        <span class="slds-media slds-media_center">
+                                            <span class="slds-media__body">
+                                                <span class="slds-truncate">Add {manualRecipientOptionLabel}</span>
+                                                <span class="slds-truncate slds-text-body_small slds-text-color_weak">Manual email</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </li>
+                            </template>
+
+                            <template if:true={showRecipientNoResults}>
+                                <li role="presentation" class="email-recipient__list-item slds-dropdown__item">
+                                    <div class="email-recipient__option email-recipient__option--empty">
+                                        <span class="slds-text-body_small slds-text-color_weak">No results</span>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <template if:true={hasRecipients}>
+        <div class="email-preview__pills">
+            <template for:each={recipients} for:item="recipient">
+                <span
+                    key={recipient.key}
+                    class={recipient.pillClass}
+                    title={recipient.validationMessage}>
+                    <span class="slds-pill email-recipient__pill" title={recipient.tooltip}>
+                        <span class="slds-pill__icon_container email-recipient__pill-icon">
+                            <lightning-icon
+                                icon-name={recipient.iconName}
+                                size="x-small"
+                                alternative-text={recipient.iconLabel}>
+                            </lightning-icon>
+                        </span>
+                        <span class="slds-pill__label" title={recipient.tooltip}>{recipient.label}</span>
+                        <button
+                            class="slds-button slds-button_icon slds-pill__remove"
+                            title="Remove"
+                            data-key={recipient.key}
+                            onclick={handleRecipientRemove}>
+                            <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Remove</span>
+                        </button>
+                    </span>
+                </span>
+            </template>
+        </div>
+    </template>
+</template>

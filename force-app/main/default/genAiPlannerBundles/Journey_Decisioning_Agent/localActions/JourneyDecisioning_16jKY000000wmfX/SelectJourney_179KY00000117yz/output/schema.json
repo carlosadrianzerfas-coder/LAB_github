@@ -1,0 +1,35 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "dataExtWriteStatus" : {
+      "title" : "Data Extension Write Status",
+      "description" : "Indication of whether the row was added to the data extension.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    },
+    "selectedJourneyId" : {
+      "title" : "Selected Journey ID",
+      "description" : "Identifies the selected journey.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    },
+    "selectedJourneyName" : {
+      "title" : "Selected Journey Name",
+      "description" : "The name of the selected journey.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    },
+    "selectedJourneyType" : {
+      "title" : "Selected Journey Type",
+      "description" : "The journey type can be MARKETING_JOURNEY or FLOW_AUTOMATION_EVENT_TRIGGER.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

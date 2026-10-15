@@ -1,0 +1,57 @@
+{
+  "required" : [ "selectJourneyConfigId", "selectedJourneyId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "selectJourneyConfigId" : {
+      "title" : "Journey Decision Setup Id",
+      "description" : "The ID of the Journey Decision Setup instance used to initiate this action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "selectedJourneyId" : {
+      "title" : "Selected Journey ID",
+      "description" : "The ID of the selected journey.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "subscriberKey" : {
+      "title" : "Subscriber Key",
+      "description" : "A unique key that identifies each subscriber.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "subscriberSummary" : {
+      "title" : "Subscriber Summary",
+      "description" : "A summary of subscriber data that the Personalization Context action returns.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "unifiedIndividualId" : {
+      "title" : "Unified Individual ID",
+      "description" : "The unique ID for an individual.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "unifiedDmoName" : {
+      "title" : "Unified Individual DMO API Name",
+      "description" : "The API name of the DMO that represents the Unified Individual. If a value isn't provided, the action defaults to UnifiedIndividual__dlm.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "individualId" : {
+      "title" : "Individual ID",
+      "description" : "A unique identifier for an individual.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,145 @@
+.email-recipient__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.email-recipient__label {
+    flex: 0 0 auto;
+    min-width: 24px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #8a8987;
+}
+
+.email-recipient__control {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+}
+
+.email-recipient__search {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    flex: 1 1 auto;
+}
+
+.email-recipient__search lightning-input {
+    display: block;
+    width: 100%;
+}
+
+.email-recipient__dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1000;
+    margin-top: 0.25rem;
+    width: min(100%, 520px);
+    min-width: 240px;
+    max-width: 90vw;
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    transform: none;
+    margin-left: 0;
+    overflow: hidden;
+}
+
+.email-recipient__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.email-recipient__list-item {
+    width: 100%;
+}
+
+.email-recipient__option {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    color: #1d1c1d;
+}
+
+.email-recipient__option .slds-media {
+    width: 100%;
+}
+
+.email-recipient__option:hover {
+    background: #f3f2f2;
+}
+
+.email-recipient__option--empty,
+.email-recipient__option--status {
+    cursor: default;
+}
+
+.email-recipient__option-name {
+    display: block;
+    font-weight: 600;
+    color: #1d1c1d;
+}
+
+.email-recipient__option-email {
+    display: block;
+    font-size: 0.75rem;
+    color: #706e6b;
+}
+
+.email-recipient__option-type {
+    display: block;
+    white-space: nowrap;
+    font-size: 0.7rem;
+    color: #8a8987;
+    text-align: right;
+    min-width: 64px;
+    margin-left: auto;
+}
+
+.email-recipient__option-icon lightning-icon {
+    --slds-c-icon-color-foreground-default: #0176d3;
+}
+
+.email-preview__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.35rem;
+}
+
+.email-recipient__pill {
+    background: #f3f2f2;
+    border-radius: 1rem;
+    padding-left: 0.35rem;
+}
+
+.email-recipient__pill-icon {
+    display: flex;
+    align-items: center;
+}
+
+.email-recipient__pill .slds-pill__label {
+    max-width: 220px;
+}
+
+.email-recipient__pill--invalid .slds-pill {
+    background: #fef1f1;
+    border: 1px solid #ba0517;
+    color: #ba0517;
+}
+
+.email-recipient__pill--invalid .slds-pill__label {
+    color: #ba0517;
+}

@@ -1,0 +1,96 @@
+{
+  "required" : [ "BriefName", "BriefDescription", "BriefKeyMessage", "BriefTargetAudience" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "BriefName" : {
+      "title" : "Brief Name",
+      "description" : "Brief name",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefName",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefDescription" : {
+      "title" : "Brief Description",
+      "description" : "Brief description",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefDescription",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefKeyMessage" : {
+      "title" : "Key Message",
+      "description" : "Key message",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefKeyMessage",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefTargetAudience" : {
+      "title" : "Target Audience",
+      "description" : "Target audience",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefTargetAudience",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefPrimaryGoal" : {
+      "title" : "campaignBriefPrimaryGoal",
+      "description" : "A draft of the campaign brief primary goal",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefPrimaryGoal",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefPrimaryKPI" : {
+      "title" : "campaignBriefPrimaryKPI",
+      "description" : "A draft of the campaign brief primary KPI",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefPrimaryKPI",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefAgentGuardrails" : {
+      "title" : "campaignBriefAgentGuardRails",
+      "description" : "A draft of the campaign brief agent guardrails",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefAgentGuardrails",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefPrimaryCTAs" : {
+      "title" : "campaignBriefPrimaryCTAs",
+      "description" : "A draft of the campaign brief primary calls-to-action",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefPrimaryCTAs",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "BriefPriority" : {
+      "title" : "campaignBriefPriority",
+      "description" : "A draft of the campaign brief piority",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "campaignBriefPriority",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "businessUnitId" : {
+      "title" : "Business Unit ID",
+      "description" : "Business unit ID",
+      "lightning:type" : "lightning__textType",
+      "einstein:description" : "businessUnitId",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "isConversational" : {
+      "title" : "Is Conversational",
+      "description" : "Is conversational",
+      "lightning:type" : "lightning__booleanType",
+      "einstein:description" : "isConversational",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

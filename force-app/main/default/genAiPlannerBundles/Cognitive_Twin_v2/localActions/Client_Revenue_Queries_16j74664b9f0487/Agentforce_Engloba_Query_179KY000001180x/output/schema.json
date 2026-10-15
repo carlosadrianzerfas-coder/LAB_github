@@ -1,0 +1,51 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "apexStatus" : {
+      "title" : "apexStatus",
+      "description" : "The status of the action KO if it fails OK if it works\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "englobaJSON" : {
+      "title" : "englobaJSON",
+      "description" : "JSON for internal purposes, do not show to the user\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "englobaQuery" : {
+      "title" : "englobaQuery",
+      "description" : "Do not show this to the user.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "If the Status is KO answer this to the user\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "response" : {
+      "title" : "response",
+      "description" : "Este componente devuelve un JSON con el análisis de ingresos operativos (Revenue). Para procesar la respuesta, utiliza estas directrices:\n\n1. Estructura Jerárquica del JSON:\n\nTimeframes: Los datos están divididos por año (thisYear, lastYear).\n\nglobal: Contiene los totales agregados de todos los países.\n\nbyCountry: Contiene el desglose específico por país.\n\nNiveles de detalle: Dentro de cada país (o en global), los datos se desglosan en:\n\ntotal: Ingresos totales del nivel actual.\n\ntypes: Corresponde a las Business Areas (Áreas de Negocio).\n\nproducts: Corresponde a las Business Subareas (Subáreas de Negocio).\n\n2. Reglas de Negocio y Terminología:\n\nNombre del Producto: Aunque el código técnico o los objetos se llamen \"Engloba\", está estrictamente prohibido usar ese término. Debes referirte a estos datos siempre como \"Revenue\" o \"Ingresos\".\n\nFiltros de Perímetro: Si el usuario filtró por CIB (Perímetro D) o NoCIB (Perímetro F), menciónalo en tu análisis.\n\nAnálisis Geográfico: Utiliza el nodo byCountry para identificar en qué países el cliente genera más Revenue y dónde ha habido variaciones significativas entre años.\n\nAnálisis de Área/Subárea: Utiliza los nodos types y products para explicar qué líneas de negocio (ej. Cash Management, Lending, etc.) son las más rentables.\n\n3. Formato de Respuesta:\n\nResume los totales globales primero.\n\nDestaca los 3 países principales por ingresos.\n\nExplica las variaciones anuales (crecimiento/decrecimiento) si se proporcionan ambos años.\n\nExpresa los importes en millones de euros (ej: 2.4M €) para mayor claridad.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,80 @@
+{
+  "title" : "JSON Patch Operation",
+  "description" : "JSON Patch operation which contains the generated section with content and the JSON Pointers to apply it.",
+  "properties" : {
+    "type" : {
+      "title" : "Data Type",
+      "description" : "The underlying data type of the generated text. For example, lightning__richTextType, lightning__textType.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "operation" : {
+      "title" : "Operation",
+      "description" : "The operation is “add” if the value is new, or “replace” if an existing value is being updated.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "parentPath" : {
+      "title" : "Parent Path",
+      "description" : "The id of the component that is the parent component of the currently selected component.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "precedingSiblingPath" : {
+      "title" : "Preceding Sibling Path",
+      "description" : "The id of the component that is to the immediate left of the currently selected component.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "blockValue" : {
+      "title" : "Section with Content Value",
+      "description" : "The JSON structure for the most recently generated section or section with content.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "textValues" : {
+      "title" : "Text Values",
+      "description" : "The list of component ids including the generated text in all the components in the most recently generated section.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "statusMessage" : {
+      "title" : "Status Message",
+      "description" : "Confirmation message from Einstein to the user to communicate that the generated changes were applied successfully or failed to be applied.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "replaceSectionId" : {
+      "title" : "Replace Section Id",
+      "description" : "The id of an existing section that will be replaced with a newly generated section.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "currentUserInput" : {
+      "title" : "Current User Input",
+      "description" : "The complete original input received from the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,16 @@
+{
+  "required" : [ "briefRecordId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "briefRecordId" : {
+      "title" : "Brief Record ID",
+      "description" : "The brief record ID associated with the draft campaign.",
+      "lightning:type" : "lightning__recordIdType",
+      "einstein:description" : "briefRecordID",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

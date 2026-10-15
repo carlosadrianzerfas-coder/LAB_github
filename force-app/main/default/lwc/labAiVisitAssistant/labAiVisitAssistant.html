@@ -1,0 +1,298 @@
+<template>
+    <!-- ====================================================
+         VIEW 0 - ONLY THE LAUNCH BUTTON
+         ==================================================== -->
+    <template if:true={showLauncher}>
+        <div class="ai-launcher-wrapper">
+            <template if:true={showEmailLauncher}>
+                <button
+                    class="ai-launcher-btn"
+                    onclick={handleSendSummaryEmail}
+                    disabled={emailActionDisabled}
+                    aria-disabled={emailActionDisabled}
+                    title={emailActionTooltip}>
+                    <lightning-icon
+                        class="astro-icon"
+                        icon-name="utility:email"
+                        size="medium">
+                    </lightning-icon>
+                    <span>Send visit summary</span>
+                </button>
+            </template>
+            <template if:false={showEmailLauncher}>
+                <button
+                    class="ai-launcher-btn"
+                    onclick={handleOpenAssistant}
+                    disabled={isVisitFinalized}
+                    aria-disabled={isVisitFinalized}
+                    title={finalizedTooltip}>
+                    <lightning-icon
+                        class="astro-icon"
+                        icon-name="utility:agent_astro"
+                        size="medium">
+                    </lightning-icon>
+                    <span>AI Visit Assistant</span>
+                </button>
+            </template>
+        </div>
+    </template>
+
+    <!-- ====================================================
+         VIEW 1 - FULL ASSISTANT
+         ==================================================== -->
+    <template if:false={showLauncher}>
+        <lightning-card title="AI Visit Assistant" icon-name="utility:agent_astro">
+            <div class="slds-p-around_medium">
+
+                <!-- LOADING -->
+                <template if:true={isLoading}>
+                    <lightning-spinner
+                        size="medium"
+                        alternative-text="Processing...">
+                    </lightning-spinner>
+                </template>
+
+                <!-- STEP 1 - TRANSCRIPTION -->
+                <template if:true={showInput}>
+                    <lightning-textarea
+                        label="Transcript of the visit"
+                        value={transcript}
+                        onchange={handleTranscriptChange}
+                        placeholder="Insert the visit transcript here or use mobile speech-to-text..."
+                        class="full-width ai-textarea">
+                    </lightning-textarea>
+
+                    <div class="slds-m-top_medium slds-align_absolute-center">
+                        <lightning-button
+                            variant="brand"
+                            label="Start Analysis"
+                            onclick={handleAnalyzeClick}>
+                        </lightning-button>
+                    </div>
+                </template>
+
+                <!-- STEP 2 - RESULTS IN CARDS -->
+                <template if:true={showPreview}>
+
+                    <!-- ===================== SUMMARY ===================== -->
+                    <c-lab-ai-visit-summary
+                        feedback-rich-text={feedbackRichText}
+                        is-editing={isEditingSummary}
+                        onedit={handleEditSummary}
+                        oncancel={handleCancelEditSummary}
+                        onsave={handleSaveSummaryWrapper}
+                        onchange={handleSummaryChangeWrapper}>
+                    </c-lab-ai-visit-summary>
+
+                    <!-- ===================== VISIT DETECTION & DETAILS ===================== -->
+                    <template if:true={isAccountMode}>
+                        <div class="slds-m-top_medium">
+                            <c-lab-ai-visit-visit-detection
+                                is-account-mode={isAccountMode}
+                                mode={visitSelectionMode}
+                                open-visits={openVisits}
+                                selected-existing-visit-id={selectedExistingVisitId}
+                                ai-detected-visit-id={aiDetectedVisitId}
+                                current-visit-draft={currentVisitDraft}
+                                onmodechange={handleVisitSelectionModeChange}
+                                onexistingchange={handleExistingVisitChange}
+                                oncurrentvisitchange={handleCurrentVisitFieldChange}
+                                onopenvisit={handleOpenExistingVisit}
+                                onsaveandopen={handleSaveAndOpenExistingVisit}
+                                oncreateandcontinue={handleCreateVisitAndContinue}>
+                            </c-lab-ai-visit-visit-detection>
+                        </div>
+                    </template>
+
+                    <!-- ===================== CLIENT PARTICIPANTS ===================== -->
+                    <c-lab-ai-visit-client-participants
+                        participants={clientParticipantDrafts}
+                        account-name={accountName}
+                        onaddclient={handleAddClientParticipant}
+                        oneditclient={handleEditClientFromChild}
+                        ondeleteclient={handleDeleteClientFromChild}
+                        onrestoreclient={handleRestoreClientFromChild}
+                        onapplyclients={handleApplyClients}>
+                    </c-lab-ai-visit-client-participants>
+
+                    <!-- ===================== INTERNAL PARTICIPANTS ===================== -->
+                    <c-lab-ai-visit-internal-participants
+                        participants={internalParticipantDrafts}
+                        onaddinternal={handleAddInternalParticipant}
+                        oneditinternal={handleEditInternalFromChild}
+                        ondeleteinternal={handleDeleteInternalFromChild}
+                        onrestoreinternal={handleRestoreInternalFromChild}
+                        onapplyinternal={handleApplyInternal}>
+                    </c-lab-ai-visit-internal-participants>
+
+                    <!-- ===================== FUTURE VISITS ===================== -->
+                    <c-lab-ai-visit-future-visits
+                        visits={visitDrafts}
+                        onaddvisit={handleAddVisit}
+                        oneditvisit={handleEditVisitFromChild}
+                        ondeletevisit={handleDeleteVisitFromChild}
+                        onapplyvisits={handleApplyVisits}>
+                    </c-lab-ai-visit-future-visits>
+
+                    <!-- ===================== TASKS ===================== -->
+                    <c-lab-ai-visit-tasks
+                        tasks={taskDrafts}
+                        onaddtask={handleAddTask}
+                        onedittask={handleEditTaskFromChild}
+                        ondeletetask={handleDeleteTaskFromChild}
+                        onrestoretask={handleRestoreTaskFromChild}
+                        onapplytasks={handleApplyTasks}>
+                    </c-lab-ai-visit-tasks>
+
+                    <!-- FINAL BUTTON AREA -->
+                    <div class="assistant-footer">
+                        <div class="assistant-footer__info">
+                            Changes are not saved in Salesforce until you click <strong>{applyAllLabel}.</strong>
+                        </div>
+
+                        <!-- Main button -->
+                        <div class="assistant-footer__primary">
+                            <lightning-button
+                                variant="brand"
+                                label={applyAllLabel}
+                                icon-name="utility:save"
+                                icon-position="left"
+                                onclick={handleApplyClick}>
+                            </lightning-button>
+                            <div class="assistant-footer__checkbox">
+                                <lightning-input
+                                    type="checkbox"
+                                    label='Move stage to "Visit finalized"'
+                                    checked={moveVisitToFinalized}
+                                    onchange={handleMoveToFinalizedChange}>
+                                </lightning-input>
+                                <div class="assistant-footer__help">
+                                    <lightning-helptext
+                                        content="Once the visit is marked as finalized, the AI Visit Assistant will no longer be available for this visit.">
+                                    </lightning-helptext>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary actions -->
+                        <div class="assistant-footer__secondary">
+                            <button
+                                type="button"
+                                class="assistant-footer__link"
+                                onclick={handleBackToInput}>
+                                Return to Edit Transcript
+                            </button>
+
+                            <button
+                                type="button"
+                                class="assistant-footer__link"
+                                onclick={handleSaveForLater}>
+                                {saveAndContinueLabel}
+                            </button>
+                        </div>
+                    </div>
+
+                </template>
+            </div>
+        </lightning-card>
+
+        <!-- ====================================================
+             GLOBAL MODAL (CHILD COMPONENT)
+        ==================================================== -->
+        <c-lab-ai-visit-record-modal
+            is-open={isModalOpen}
+            modal-type={modalType}
+            modal-title={modalTitle}
+            modal-record={modalRecord}
+            onsave={handleModalSave}
+            oncancel={handleModalCancel}>
+        </c-lab-ai-visit-record-modal>
+
+    </template>
+
+    <!-- ====================================================
+         EMAIL PREVIEW MODAL
+    ==================================================== -->
+    <template if:true={emailPreviewOpen}>
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            aria-labelledby="emailPreviewHeading"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container email-preview-modal__container">
+                <header class="slds-modal__header">
+                    <button
+                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close"
+                        onclick={handleEmailPreviewCancel}>
+                        <lightning-icon
+                            icon-name="utility:close"
+                            alternative-text="Close"
+                            size="small">
+                        </lightning-icon>
+                    </button>
+                    <h2 id="emailPreviewHeading" class="slds-text-heading_medium">
+                        Preview visit summary
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium email-preview">
+                    <template if:true={emailPreviewFromLabel}>
+                        <div class="email-preview__from">
+                            <span class="email-preview__label">From</span>
+                            <span class="slds-pill email-recipient__pill email-recipient__pill--readonly" title={emailPreviewFromLabel}>
+                                <span class="slds-pill__icon_container email-recipient__pill-icon">
+                                    <lightning-icon
+                                        icon-name="standard:user"
+                                        size="x-small"
+                                        alternative-text="Sender">
+                                    </lightning-icon>
+                                </span>
+                                <span class="slds-pill__label" title={emailPreviewFromLabel}>{emailPreviewFromLabel}</span>
+                            </span>
+                        </div>
+                    </template>
+                    <div class="email-preview__field">
+                        <c-lab-ai-recipient-lookup
+                            account-id={accountId}
+                            value={emailRecipients}
+                            disabled={emailNavigating}
+                            onrecipientschange={handleRecipientsChange}>
+                        </c-lab-ai-recipient-lookup>
+                    </div>
+                    <div class="email-preview__field">
+                        <lightning-input
+                            type="text"
+                            label="Subject"
+                            value={emailPreview.subject}
+                            onchange={handleEmailPreviewSubjectChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="email-preview__editor">
+                        <lightning-input-rich-text
+                            label="Body"
+                            value={emailPreview.bodyHtml}
+                            formats={emailBodyFormats}
+                            onchange={handleEmailPreviewBodyChange}
+                            oninput={handleEmailPreviewBodyChange}>
+                        </lightning-input-rich-text>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button
+                        label="Cancel"
+                        onclick={handleEmailPreviewCancel}>
+                    </lightning-button>
+                    <lightning-button
+                        class="slds-m-left_small"
+                        variant="brand"
+                        label="Send Email"
+                        onclick={handleEmailPreviewSend}
+                        disabled={emailPreviewSendDisabled}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,26 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Brief" : {
+      "title" : "campaignBrief",
+      "description" : "The campaign brief and its components.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Brief"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "BriefRecordId" : {
+      "title" : "campaignBriefID",
+      "description" : "The ID for the campaign brief.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

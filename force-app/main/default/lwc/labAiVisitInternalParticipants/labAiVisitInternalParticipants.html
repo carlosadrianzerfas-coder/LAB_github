@@ -1,0 +1,165 @@
+<template>
+    <!-- ===================== INTERNAL PARTICIPANTS ===================== -->
+    <div class="section-header slds-m-top_large">
+        <div class="section-title">Internal Participants</div>
+        <div class="section-actions">
+            <lightning-button
+                variant="neutral"
+                label="Apply Internal Participants in Salesforce"
+                icon-name="utility:save"
+                class="section-action-button"
+                onclick={handleApplyClick}>
+            </lightning-button>
+        </div>
+    </div>
+
+    <div class="record-grid">
+        <!-- List of Internal Participants (existing + new) -->
+        <template if:true={hasInternalParticipants}>
+            <template for:each={participants} for:item="bp">
+                <article key={bp.id} class={bp.cardClass}>
+                    <div class="record-card__header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <lightning-icon
+                                    icon-name="standard:user"
+                                    size="small">
+                                </lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h3 class="slds-card__header-title">
+                                    {bp.userName}
+                                </h3>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    {bp.subtitle}
+                                </p>
+                        </div>
+                    </div>
+                    <div class="record-card__actions">
+                        <template if:true={bp.pendingDelete}>
+                            <lightning-button-icon
+                                icon-name="utility:undo"
+                                alternative-text="Undo delete"
+                                variant="border-filled"
+                                data-id={bp.id}
+                                onclick={handleRestoreClick}>
+                            </lightning-button-icon>
+                        </template>
+                        <template if:false={bp.pendingDelete}>
+                            <template if:true={bp.disableEdit}>
+                                <button
+                                    class="slds-button slds-button_icon-border-filled"
+                                    data-id={bp.id}
+                                    disabled
+                                    aria-disabled="true"
+                                    title={bp.disableEditTooltip}>
+                                    <lightning-icon
+                                        icon-name="utility:edit"
+                                        size="xx-small"
+                                        class="icon-disabled"
+                                        alternative-text={bp.disableEditTooltip}>
+                                    </lightning-icon>
+                                </button>
+                            </template>
+                            <template if:false={bp.disableEdit}>
+                                <lightning-button-icon
+                                    icon-name="utility:edit"
+                                    alternative-text="Edit"
+                                    variant="border-filled"
+                                    data-id={bp.id}
+                                    onclick={handleEditClick}>
+                                </lightning-button-icon>
+                            </template>
+                            <lightning-button-icon
+                                icon-name="utility:delete"
+                                alternative-text="Delete"
+                                variant="border-filled"
+                                data-id={bp.id}
+                                onclick={handleDeleteClick}>
+                            </lightning-button-icon>
+                        </template>
+                    </div>
+                </div>
+                <div class="record-card__body">
+                    <template if:false={bp.pendingDelete}>
+                        <p class="slds-text-body_small">
+                            <b>Email:</b> {bp.email}
+                        </p>
+                        <p class="slds-text-body_small">
+                            <b>Phone:</b> {bp.phone}
+                        </p>
+
+                        <template if:true={bp.showModified}>
+                            <span class="status-pill status-pill--modified slds-m-top_x-small">
+                                Modified (will update)
+                            </span>
+                        </template>
+                        <template if:false={bp.showModified}>
+                            <template if:true={bp.isExisting}>
+                                <template if:true={bp.isValid}>
+                                    <span class="status-pill status-pill--existing slds-m-top_x-small">
+                                        Already exists in this visit (informational)
+                                    </span>
+                                </template>
+                                <template if:false={bp.isValid}>
+                                    <span class="status-pill status-pill--error">
+                                        DWP User is required.
+                                    </span>
+                                </template>
+                            </template>
+                            <template if:false={bp.isExisting}>
+                                <template if:true={bp.isValid}>
+                                    <span class="status-pill status-pill--ok">
+                                        Ready to create
+                                    </span>
+                                </template>
+                                <template if:false={bp.isValid}>
+                                    <span class="status-pill status-pill--error">
+                                        Check the associated user.
+                                    </span>
+                                </template>
+                            </template>
+                        </template>
+                        <template if:true={bp.isCurrentUser}>
+                            <span class="status-pill status-pill--existing slds-m-top_x-small">
+                                Current User
+                            </span>
+                        </template>
+                    </template>
+
+                    <template if:true={bp.pendingDelete}>
+                        <p class="slds-text-body_small">
+                            This Internal participant will be removed from the visit when you apply the changes.
+                        </p>
+                        <span class="status-pill status-pill--delete slds-m-top_x-small">
+                            Pending deletion
+                        </span>
+                    </template>
+                </div>
+            </article>
+        </template>
+        </template>
+
+        <!-- Add Internal Participant Card -->
+        <article
+            class="record-card record-card--add"
+            onclick={handleAddClick}>
+            <div class="record-card__add-inner">
+                <lightning-icon
+                    icon-name="utility:adduser"
+                    size="small"
+                    class="record-card__add-icon">
+                </lightning-icon>
+                <div class="record-card__add-text">
+                    Add Internal Participant
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <template if:false={hasInternalParticipants}>
+        <p class="section-empty-hint">
+            No Internal participants detected. You can add them manually.
+        </p>
+    </template>
+</template>

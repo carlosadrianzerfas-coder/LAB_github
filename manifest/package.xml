@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Backend invoked by the LWC family. -->
+    <types>
+        <members>LAB_VisitAI_Controller</members>
+        <members>LAB_VisitAI_DTO</members>
+        <members>LAB_VisitAI_Service</members>
+        <members>LAB_VisitAI_TranscriptUtil</members>
+        <members>LAB_VisitSummaryEmailService</members>
+        <name>ApexClass</name>
+    </types>
+ 
+    <!-- The exposed component and all its child components. -->
+    <types>
+        <members>labAiRecipientLookup</members>
+        <members>labAiVisitAssistant</members>
+        <members>labAiVisitAssistantUtils</members>
+        <members>labAiVisitClientParticipants</members>
+        <members>labAiVisitFutureVisits</members>
+        <members>labAiVisitInternalParticipants</members>
+        <members>labAiVisitRecordModal</members>
+        <members>labAiVisitSummary</members>
+        <members>labAiVisitTasks</members>
+        <members>labAiVisitVisitDetection</members>
+        <name>LightningComponentBundle</name>
+    </types>
+ 
+    <!-- Prompt Builder template called by LAB_VisitAI_Service. -->
+    <types>
+        <members>AI_Visit_Assistant_Template</members>
+        <name>GenAiPromptTemplate</name>
+    </types>
+ 
+    <!-- Custom fields used directly by Apex or imported by the LWCs. -->
+    <types>
+        <members>Visit.AI_VISIT_TXT_AnalysisVisitTranscriptJSON__c</members>
+        <members>Visit.AI_VISIT_TXT_TranscriptOfTheVisit__c</members>
+        <members>Visit.LAB_Channel__c</members>
+        <members>Visit.LAB_Duration__c</members>
+        <members>Visit.LAB_Name__c</members>
+        <members>Visit.LAB_purpose_type__c</members>
+        <members>Visit.LAB_Status_type__c</members>
+        <members>Visit.LAB_Summary__c</members>
+        <name>CustomField</name>
+    </types>
+ 
+    <!-- Junction objects used to maintain client and internal participants. -->
+    <types>
+        <members>Visit_Management_Team__c</members>
+        <name>CustomObject</name>
+    </types>
+    
+    <version>65.0</version>
+</Package>

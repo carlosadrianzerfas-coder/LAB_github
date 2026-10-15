@@ -1,0 +1,26 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaign" : {
+      "title" : "Campaign",
+      "description" : "The Campaign record",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Campaign"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "flowVersionId" : {
+      "title" : "Flow Version ID",
+      "description" : "The Flow Version ID",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

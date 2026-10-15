@@ -1,0 +1,35 @@
+{
+  "required" : [ "question" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "SFObject" : {
+      "title" : "SFObject",
+      "description" : "The question object the user is asking for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "accountId" : {
+      "title" : "accountId",
+      "description" : "The accountId that the user is asking for, obtained from the Agentforce Identify Record action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "question" : {
+      "title" : "question",
+      "description" : "The exact user question that has to be answered. Pass the full user utterance verbatim, including punctuation and question marks. If the utterance is too short or ambiguous to provide context, automatically prepend or append clarifying information, such as the account name or relevant visit, so the system can answer accurately. Do not summarize, extract keywords, or infer intent beyond adding necessary contextual information.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "The recordID of the identified record.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

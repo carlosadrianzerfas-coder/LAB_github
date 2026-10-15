@@ -1,0 +1,40 @@
+{
+  "title" : "JSON Patch Operation",
+  "description" : "JSON Patch operation which contains the generated text and the JSON Pointer to apply it.",
+  "properties" : {
+    "path" : {
+      "title" : "Path",
+      "description" : "The JSON Pointer to apply this new value to on a given JSON document. The path points to which specific property on which particular component is being changed.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "value" : {
+      "title" : "Value",
+      "description" : "The complete raw text of the generated draft content. Includes the entire contents of a property. For example, includes HTML tags if they’re present in the content.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "type" : {
+      "title" : "Data Type",
+      "description" : "The underlying data type of the generated text. For example, lightning__richTextType, lightning__textType.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "op" : {
+      "title" : "Operation",
+      "description" : "The operation is “add” if the value is new, or “replace” if an existing value is being updated.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

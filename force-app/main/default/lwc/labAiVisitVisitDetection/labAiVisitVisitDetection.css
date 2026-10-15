@@ -1,0 +1,91 @@
+/* Visit detection + details card */
+:host {
+    display: block;
+}
+
+.visit-detection {
+    border: 1px solid #dddbda;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #ffffff;
+    margin-bottom: 1.25rem;
+}
+
+.visit-detection__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.visit-detection__title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.visit-detection__selection {
+    border: 1px dashed #d8dde6;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    background: #f9fbfd;
+    margin-bottom: 0.75rem;
+}
+
+.visit-detection__mode-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.visit-detection__existing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.visit-detection__note {
+    font-size: 0.8rem;
+    color: #2e2e2e;
+    margin-bottom: 0.5rem;
+}
+
+.visit-detection__hint {
+    font-size: 0.75rem;
+    color: #706e6b;
+    margin-bottom: 0.75rem;
+}
+
+.visit-detection__warning {
+    color: #c23934;
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.visit-detection__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.visit-detection__actions lightning-button .slds-button {
+    background-color: #ffffff;
+    color: #0b5b33;
+    border: 1px solid #0b5b33;
+    box-shadow: none;
+}
+
+.visit-detection__actions lightning-button .slds-button:hover {
+    background-color: #f4f6f9;
+}
+
+.visit-detection__actions lightning-button .slds-button:focus {
+    box-shadow: 0 0 0 2px rgba(0, 95, 178, 0.2);
+}
+
+.visit-detection__empty {
+    font-size: 0.75rem;
+    color: #706e6b;
+}

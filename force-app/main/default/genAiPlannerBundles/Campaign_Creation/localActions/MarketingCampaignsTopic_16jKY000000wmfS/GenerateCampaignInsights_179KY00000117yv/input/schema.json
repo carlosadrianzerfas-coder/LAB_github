@@ -1,0 +1,16 @@
+{
+  "required" : [ "campaignId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "campaignId" : {
+      "title" : "Campaign ID",
+      "description" : "The ID of the campaign record to get engagement and performance data from.",
+      "lightning:type" : "lightning__recordIdType",
+      "einstein:description" : "campaignId",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}
